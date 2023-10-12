@@ -6,7 +6,7 @@ https://teamsparta.notion.site/e743be2c68e14585bbc0498514d0f04f
 
 
 ## 🖥️ Project Introduction
-스파르타코딩클럽 내일배움캠프 - 게임 기초 프로젝트
+스파르타코딩클럽 내일배움캠프 - 3D 게임 심화 프로젝트
 <br> AimTrainer
 
 <br>
@@ -15,7 +15,7 @@ https://teamsparta.notion.site/e743be2c68e14585bbc0498514d0f04f
 * 23.10.12 ~ 23.10.20
 
 ### 🧑‍🤝‍🧑 Member
- - 김준번(팀장) / https://github.com/IAK0401
+ - 김준범(팀장) / https://github.com/IAK0401
  - 김도현(팀원) / https://github.com/dohyeon9483
  - 김진성(팀원) / https://github.com/GYALLERHORN
  - 문현우(팀원) / https://github.com/Munch310/
