@@ -1,28 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
-{
-    private static T instance;
-
-    public static T Instance
-    {
-        get
-        {
-            if (instance == null)
-            {
-                instance = FindObjectOfType<T>();
-                if (instance == null)
-                {
-                    GameObject obj = new GameObject();
-                    obj.name = typeof(T).Name;
-                    instance = obj.AddComponent<T>();
-                }
-            }
-            return instance;
-        }
-    }
-}
 
 public class UIManager : Singleton<UIManager>
 {
@@ -56,12 +34,12 @@ public class UIManager : Singleton<UIManager>
 
     public void OnStartButtonClicked()
     {
-        // °ÔÀÓ ½ÃÀÛ ·ÎÁ÷
+        // ê²Œì„ ì‹œì‘ ë¡œì§
         Debug.Log("Game is starting...");
         startMenu.SetActive(false);
         if (startText != null)
         {
-            startText.text = "RESUME"; // ÅØ½ºÆ® º¯°æ
+            startText.text = "RESUME"; // í…ìŠ¤íŠ¸ ë³€ê²½
         }
     }
 
@@ -73,7 +51,7 @@ public class UIManager : Singleton<UIManager>
 
     public void OnExitButtonClicked()
     {
-        // °ÔÀÓ Á¾·á ·ÎÁ÷
+        // ê²Œì„ ì¢…ë£Œ ë¡œì§
         Debug.Log("Game is exiting...");
         Application.Quit();
     }
