@@ -28,5 +28,12 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
             DontDestroyOnLoad(this.transform.root.gameObject);
         else
             DontDestroyOnLoad(this.gameObject);
+
+        Init();
+    }
+
+    public virtual void Init()
+    {
+
     }
 }
