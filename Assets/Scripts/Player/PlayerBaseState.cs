@@ -19,12 +19,12 @@ public class PlayerBaseState : IState
 
     public virtual void Enter()
     {
-        AddInputActionsCallbacks();
+        //AddInputActionsCallbacks();
     }
 
     public virtual void Exit()
     {
-        RemoveInputActionsCallbacks();
+        //RemoveInputActionsCallbacks();
     }
 
     public virtual void HandleInput()
@@ -40,6 +40,11 @@ public class PlayerBaseState : IState
     public virtual void Update()
     {
         Move();
+    }
+
+    protected virtual void OnMovementCanceled(InputAction.CallbackContext context)
+    {
+
     }
 
     private void ReadMovementInput()
