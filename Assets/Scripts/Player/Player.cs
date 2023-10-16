@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [field: Header("References")]
+    [field: SerializeField] public PlayerSO Data { get; private set; }
+
     [field: Header("Animations")]
     [field: SerializeField] public PlayerAnimationData AnimationData { get; private set; }
 
@@ -12,7 +15,7 @@ public class Player : MonoBehaviour
     public PlayerInput Input { get; private set; }
     public CharacterController Controller { get; private set; }
 
-
+    private PlayerStateMachine stateMachine;
 
     private void Awake()
     {
@@ -22,6 +25,8 @@ public class Player : MonoBehaviour
         Animator = GetComponentInChildren<Animator>();
         Input = GetComponent<PlayerInput>();
         Controller = GetComponent<CharacterController>();
+
+        stateMachine = new PlayerStateMachine(this);
     }
 
 
