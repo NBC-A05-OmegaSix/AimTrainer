@@ -5,21 +5,24 @@ using UnityEngine;
 
 public class AudioManager : Singleton<AudioManager>
 {
+    private const bool soundPlay = true;
+    private const bool soundStop = false;
+
     [Header("#BGM")]
-    public AudioClip[] bgmClips;
+    [SerializeField] private AudioClip[] bgmClips;
     public float bgmVolume;
     AudioSource bgmPlayer;
 
     [Header("#SFX")]
-    public AudioClip[] sfxClips;
+    [SerializeField] private AudioClip[] sfxClips;
     public float sfxVolume;
-    public int channels;
+    [SerializeField] private int channels;
     private int channelIndex;
     AudioSource[] sfxPlayers;
 
     private void Start()
     {
-        PlayerBGM(0, true);
+        PlayBGM(0, soundPlay);
     }
 
     public override void Init()
@@ -45,7 +48,7 @@ public class AudioManager : Singleton<AudioManager>
 
     }
 
-    public void PlayerBGM(int index, bool isPlay)
+    public void PlayBGM(int index, bool isPlay)
     {
         if(index >= 0 && index < bgmClips.Length)
         {
@@ -66,6 +69,19 @@ public class AudioManager : Singleton<AudioManager>
         }
     }
 
+    public void SwitchBGM(int stopIndex, int playIndex)
+    {
+        PlayBGM(stopIndex, soundStop);
+        PlayBGM(playIndex, soundPlay);
+    }
+
+    public void SetBGMVolume(float bgmVolume)
+    {
+        this.bgmVolume = bgmVolume;
+
+        bgmPlayer.volume = bgmVolume;
+    }
+
     public void PlaySFX(SoundEffects.Sfx sfx)
     {
         for(int index = 0; index < sfxPlayers.Length; index++)
@@ -77,17 +93,27 @@ public class AudioManager : Singleton<AudioManager>
                 continue;
             }
 
-            int randIndex = 0; 
+            //int randIndex = 0; 
 
-            if(sfx == SoundEffects.Sfx.FireAR || sfx == SoundEffects.Sfx.FireSR)
-            {
-                randIndex = Random.Range(0, 2);
-            }
+            //if(sfx == SoundEffects.Sfx.FireAR || sfx == SoundEffects.Sfx.FireSR)
+            //{
+            //    randIndex = Random.Range(0, 2);
+            //}
 
             channelIndex = loopIndex;
-            sfxPlayers[loopIndex].clip = sfxClips[(int)sfx + randIndex];
+            sfxPlayers[loopIndex].clip = sfxClips[(int)sfx];
             sfxPlayers[loopIndex].Play();
             break;
+        }
+    }
+
+    public void SetSFXVolume(float sfxVolume)
+    {
+        this.sfxVolume = sfxVolume;
+
+        foreach(var sfxPlayer in sfxPlayers)
+        {
+            sfxPlayer.volume = sfxVolume;
         }
     }
 }

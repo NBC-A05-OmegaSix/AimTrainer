@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class AR : MonoBehaviour
 {
-    public void OnFIre()
+    public void OnFireSpray()
+    {
+        AudioManager.Instance.PlaySFX(SoundEffects.Sfx.FireSpayAR);
+    }
+
+    public void OnFire()
     {
         AudioManager.Instance.PlaySFX(SoundEffects.Sfx.FireAR);
     }
