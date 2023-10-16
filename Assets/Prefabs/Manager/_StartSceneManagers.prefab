@@ -1,5 +1,51 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3323081170332653287
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5837089526062429338}
+  - component: {fileID: 3054369646960588295}
+  m_Layer: 0
+  m_Name: DialogueManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5837089526062429338
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3323081170332653287}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7823503654371733182}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3054369646960588295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3323081170332653287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df28543e6381840488765795e4f4f63f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameText: {fileID: 0}
+  descriptsText: {fileID: 0}
 --- !u!1 &3361190762731813622
 GameObject:
   m_ObjectHideFlags: 0
@@ -47,19 +93,32 @@ MonoBehaviour:
   bgmClips:
   - {fileID: 8300000, guid: f2b342933c2520645afc698bbd3707b8, type: 3}
   - {fileID: 8300000, guid: cdba7db6ed6d87a409892bb40b2afaf2, type: 3}
-  bgmVolume: 0.2
+  bgmVolume: 0.1
   sfxClips:
   - {fileID: 8300000, guid: f2b342933c2520645afc698bbd3707b8, type: 3}
   - {fileID: 8300000, guid: f2b342933c2520645afc698bbd3707b8, type: 3}
   - {fileID: 8300000, guid: f2b342933c2520645afc698bbd3707b8, type: 3}
   - {fileID: 8300000, guid: f2b342933c2520645afc698bbd3707b8, type: 3}
   - {fileID: 8300000, guid: f2b342933c2520645afc698bbd3707b8, type: 3}
-  - {fileID: 8300000, guid: 7e0a74c5e0a872049834e7e56ad6b41c, type: 3}
-  - {fileID: 8300000, guid: 7e0a74c5e0a872049834e7e56ad6b41c, type: 3}
-  - {fileID: 8300000, guid: a36f02e8ce71b5640884944d6a272131, type: 3}
-  - {fileID: 8300000, guid: a36f02e8ce71b5640884944d6a272131, type: 3}
+  - {fileID: 8300000, guid: 46543bc0f91759f4a9bb69eb568ec532, type: 3}
+  - {fileID: 8300000, guid: 8c35610700a18234ab5996e0ef1689e3, type: 3}
+  - {fileID: 8300000, guid: b3652615916b36844a4fc7a3dcb3a2bf, type: 3}
+  - {fileID: 8300000, guid: 843e8c15c081ff54c953dca3cfbb82f7, type: 3}
   sfxVolume: 0.2
   channels: 10
+  dialogueClips:
+  - {fileID: 8300000, guid: af4878c6e5523d74c8174848eb66bbc3, type: 3}
+  - {fileID: 8300000, guid: 46ebd0b488450384288638031e60730e, type: 3}
+  - {fileID: 8300000, guid: 40d3dbf70bc9d9c4a9fae9fdc7128cd7, type: 3}
+  - {fileID: 8300000, guid: d63f523305a77c34398447870452e684, type: 3}
+  - {fileID: 8300000, guid: 649a42a65fea2b54cb5d836fa5b82670, type: 3}
+  - {fileID: 8300000, guid: b9bfea95f2b56644fb68ffdc759a028f, type: 3}
+  - {fileID: 8300000, guid: 471802e47e64c294a855b65cd8d86701, type: 3}
+  - {fileID: 8300000, guid: 0c0b194cfe330c542a53f4ce109841ca, type: 3}
+  - {fileID: 8300000, guid: f3bb8482ce7e9a047a9a5ad5af46f9cc, type: 3}
+  - {fileID: 8300000, guid: 8592c73eaf44ffe4ca97b1673a5981e1, type: 3}
+  - {fileID: 8300000, guid: 2e5d2d9f17c289a478098af5afc12bd4, type: 3}
+  dialogueVolume: 2
 --- !u!1 &7789096145089571505
 GameObject:
   m_ObjectHideFlags: 0
@@ -89,6 +148,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6008462521594431089}
+  - {fileID: 5837089526062429338}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

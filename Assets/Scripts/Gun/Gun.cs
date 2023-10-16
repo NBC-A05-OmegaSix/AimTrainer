@@ -40,7 +40,7 @@ public class Gun : MonoBehaviour
         {
             if (currentAmmo > 0)
             {
-                isShooting = true;
+                isShooting = true;                    
                 StartCoroutine(ShootSequence());
             }
             else
@@ -99,6 +99,9 @@ void Shoot()
                 currentAmmo--;
                 // 총알 생성
                 GameObject bullet = Instantiate(bulletPrefab, gunBarrel.position, gunBarrel.rotation);
+
+                AudioManager.Instance.PlaySFX(SoundEffects.Sfx.FireAR);
+
                 Rigidbody bulletRigidbody = bullet.GetComponent<Rigidbody>();
 
                 // 총알 초기 속도 설정
@@ -175,7 +178,7 @@ IEnumerator ShootSequence()
         canShoot = false;
         for (int i = 0; i < shotNumber; i++)
         {
-            GameObject bullet = Instantiate(bulletPrefab, gunBarrel.position, gunBarrel.rotation);
+            GameObject bullet = Instantiate(bulletPrefab, gunBarrel.position, gunBarrel.rotation);            
             Rigidbody bulletRigidbody = bullet.GetComponent<Rigidbody>();
             bulletRigidbody.velocity = gunBarrel.forward * bulletSpeed;
             Destroy(bullet, bulletLifetime);

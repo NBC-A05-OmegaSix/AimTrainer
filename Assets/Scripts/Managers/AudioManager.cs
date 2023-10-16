@@ -20,6 +20,10 @@ public class AudioManager : Singleton<AudioManager>
     private int channelIndex;
     AudioSource[] sfxPlayers;
 
+    [Header("Dialogue")]
+    [SerializeField] private AudioClip[] dialogueClips;
+    [SerializeField] private float dialogueVolume;
+
     private void Start()
     {
         PlayBGM(0, soundPlay);
@@ -45,7 +49,6 @@ public class AudioManager : Singleton<AudioManager>
             sfxPlayers[index].playOnAwake = false;
             sfxPlayers[index].volume = sfxVolume;
         }
-
     }
 
     public void PlayBGM(int index, bool isPlay)
@@ -114,6 +117,22 @@ public class AudioManager : Singleton<AudioManager>
         foreach(var sfxPlayer in sfxPlayers)
         {
             sfxPlayer.volume = sfxVolume;
+        }
+    }
+
+    public void PlayerDialogue(int index)
+    {
+        if(index >= 0 && index < dialogueClips.Length)
+        {
+            AudioSource dialoguePlayer = sfxPlayers[0];
+            if (dialoguePlayer.isPlaying)
+            {
+                dialoguePlayer.Stop();
+            }
+
+            dialoguePlayer.clip = dialogueClips[index];
+            dialoguePlayer.volume = dialogueVolume;
+            dialoguePlayer.Play();
         }
     }
 }
