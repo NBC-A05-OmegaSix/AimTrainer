@@ -2,11 +2,12 @@ using UnityEngine;
 using TMPro;
 using System.IO;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class DialogueManager : Singleton<DialogueManager>
 {
-    public TextMeshProUGUI nameText;
-    public TextMeshProUGUI descriptsText;
+    [SerializeField] private TextMeshProUGUI nameText;
+    [SerializeField] private TextMeshProUGUI DialoguesText;
 
     private DialogueList dialogueList;
     private int currentDialogueIndex = 0;
@@ -16,7 +17,7 @@ public class DialogueManager : Singleton<DialogueManager>
         string json = File.ReadAllText(path);
         dialogueList = JsonUtility.FromJson<DialogueList>(json);
 
-        DisplayDialogue();
+        //DisplayDialogue();
     }
 
     void Update()
@@ -25,15 +26,14 @@ public class DialogueManager : Singleton<DialogueManager>
             NextDialogue();
     }
 
-    void DisplayDialogue()
+    public void DisplayDialogue()
     {
         if (currentDialogueIndex < dialogueList.dialogues.Count)
         {
             nameText.text = dialogueList.dialogues[currentDialogueIndex].name;
-            descriptsText.text = dialogueList.dialogues[currentDialogueIndex].dialogue;
+            DialoguesText.text = dialogueList.dialogues[currentDialogueIndex].dialogue;
 
             AudioManager.Instance.PlayerDialogue(currentDialogueIndex);
-
         }
         else
         {

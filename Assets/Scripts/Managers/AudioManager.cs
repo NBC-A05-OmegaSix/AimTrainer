@@ -20,14 +20,9 @@ public class AudioManager : Singleton<AudioManager>
     private int channelIndex;
     AudioSource[] sfxPlayers;
 
-    [Header("Dialogue")]
+    [Header("#Dialogue")]
     [SerializeField] private AudioClip[] dialogueClips;
     [SerializeField] private float dialogueVolume;
-
-    private void Start()
-    {
-        PlayBGM(0, soundPlay);
-    }
 
     public override void Init()
     {

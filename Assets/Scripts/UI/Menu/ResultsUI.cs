@@ -1,12 +1,14 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class ResultsUI : MonoBehaviour
 {
-    public Text totalShotsText;
-    public Text totalHitsText;
-    public Text totalMissesText;
-    public Text accuracyText;
+    public TextMeshProUGUI totalShotsText;
+    public TextMeshProUGUI totalHitsText;
+    public TextMeshProUGUI totalMissesText;
+    public TextMeshProUGUI accuracyText;
+    public GameObject ReportMenu;
 
     public void DisplayResults(int totalShots, int totalHits)
     {
@@ -16,4 +18,10 @@ public class ResultsUI : MonoBehaviour
         float accuracy = totalShots > 0 ? ((float)totalHits / totalShots) * 100f : 0f;
         accuracyText.text = accuracy.ToString("F2") + "%";
     }
+
+    public void OnExitButtonClicked()
+    {
+        ReportMenu.SetActive(false);
+    }
+
 }

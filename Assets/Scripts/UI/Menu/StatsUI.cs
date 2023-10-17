@@ -1,14 +1,16 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Stats : MonoBehaviour
 {
     public int totalShotsFired = 0;
     public int totalShotsHit = 0;
     public float timeRemaining = 180f;
-    public Text shotsFiredText;
-    public Text shotsHitText;
-    public Text timeRemainingText;
+    public TextMeshProUGUI shotsFiredText;
+    public TextMeshProUGUI shotsHitText;
+    public TextMeshProUGUI timeRemainingText;
     public GameObject mainMenuUI;
 
     private bool isPaused = false;

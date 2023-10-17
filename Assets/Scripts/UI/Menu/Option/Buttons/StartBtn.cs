@@ -5,6 +5,7 @@ public class StartButton : MonoBehaviour
 {
     public GameObject mainMenu;
     public GameObject statsUI;
+    public GameObject ammosUI;
 
 
     void Start()
@@ -18,6 +19,7 @@ public class StartButton : MonoBehaviour
         Debug.Log("Game is starting...");
         mainMenu.SetActive(false);
         statsUI.SetActive(true);
+        ammosUI.SetActive(true);
     }
 
 }
