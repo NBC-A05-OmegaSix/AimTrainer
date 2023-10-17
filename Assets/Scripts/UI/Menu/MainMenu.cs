@@ -1,30 +1,33 @@
-using UnityEngine;
+//using UnityEngine;
 
-public class IntroMenu : MonoBehaviour
-{
-    public GameObject optionsMenu;
-    public GameObject exitMenu;
-
-
-    void Start()
-    {
-    }
-
-    public void OnStartMenuClicked()
-    {
-        optionsMenu.SetActive(false);
-    }
-
-    public void OnOptionsButtonClicked()
-    {
-        optionsMenu.SetActive(true);
-    }
+//public class IntroMenu : MonoBehaviour
+//{
+//    public GameObject optionsMenu;
+//    public GameObject exitMenu;
+//    public GameObject ammosUI;
 
 
-    public void OnExitButtonClicked()
-    {
 
-        Debug.Log("Game is exiting...");
-        Application.Quit();
-    }
-}
+//    void Start()
+//    {
+//    }
+
+//    public void OnStartMenuClicked()
+//    {
+//        optionsMenu.SetActive(false);
+//        ammosUI.SetActive(true);
+//    }
+
+//    public void OnOptionsButtonClicked()
+//    {
+//        optionsMenu.SetActive(true);
+//    }
+
+
+//    public void OnExitButtonClicked()
+//    {
+
+//        Debug.Log("Game is exiting...");
+//        Application.Quit();
+//    }
+//}
