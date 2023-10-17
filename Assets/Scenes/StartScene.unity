@@ -275,6 +275,11 @@ PrefabInstance:
       objectReference: {fileID: 311093427126467488}
     - target: {fileID: 3054369646960588295, guid: b62539c6f526b5b429d9ed0ec5f3910c,
         type: 3}
+      propertyPath: tutorialUI
+      value: 
+      objectReference: {fileID: 1640655757966703221}
+    - target: {fileID: 3054369646960588295, guid: b62539c6f526b5b429d9ed0ec5f3910c,
+        type: 3}
       propertyPath: DialoguesText
       value: 
       objectReference: {fileID: 1394036577995739693}
