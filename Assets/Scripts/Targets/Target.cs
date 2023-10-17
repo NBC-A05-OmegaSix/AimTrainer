@@ -2,15 +2,16 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Random = System.Random;
 
 public class Target : MonoBehaviour
 {
    
     private AudioSource audiosource;
 
-    public int health = 1; //타겟 체력
-
+    public int maxHealth = 1; //타겟 체력
+    private int currentHealth;
+    public float respawnTime = 2.0f; //타겟 재생성 시간
+    private Coroutine respawnCoroutine;
 
  
     private void Awake()
@@ -18,15 +19,21 @@ public class Target : MonoBehaviour
         audiosource = GetComponent<AudioSource>();
     }
 
+
+    private void Start()
+    {
+        currentHealth = maxHealth;
+    }
     public void TakeDamage(int damage)
     {
-        health -= damage;
-        //체력이 0 이하인 경우 타겟 파괴
-        if(health <= 0)
+        currentHealth -= damage;
+
+        if (currentHealth <= 0)
         {
-            Destroy(gameObject);
+            //타겟 비활성화
+            gameObject.SetActive(false);
+
         }
     }
-    
 
 }
