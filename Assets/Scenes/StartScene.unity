@@ -268,11 +268,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1096012807584221341, guid: b62539c6f526b5b429d9ed0ec5f3910c,
-        type: 3}
-      propertyPath: dialogueClips.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: 82b18ba2e4706c342941eed8bf0bde27, type: 3}
     - target: {fileID: 3054369646960588295, guid: b62539c6f526b5b429d9ed0ec5f3910c,
         type: 3}
       propertyPath: nameText
@@ -283,45 +278,6 @@ PrefabInstance:
       propertyPath: DialoguesText
       value: 
       objectReference: {fileID: 1394036577995739693}
-    - target: {fileID: 3054369646960588295, guid: b62539c6f526b5b429d9ed0ec5f3910c,
-        type: 3}
-      propertyPath: descriptsText
-      value: 
-      objectReference: {fileID: 1394036577995739693}
-    - target: {fileID: 3054369646960588295, guid: b62539c6f526b5b429d9ed0ec5f3910c,
-        type: 3}
-      propertyPath: dialogueImage
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3054369646960588295, guid: b62539c6f526b5b429d9ed0ec5f3910c,
-        type: 3}
-      propertyPath: dialogueSprites.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3054369646960588295, guid: b62539c6f526b5b429d9ed0ec5f3910c,
-        type: 3}
-      propertyPath: dialogueSprites.Array.data[0]
-      value: 
-      objectReference: {fileID: 21300000, guid: 6e1c716fe6be73c49977a1b296281cda,
-        type: 3}
-    - target: {fileID: 3054369646960588295, guid: b62539c6f526b5b429d9ed0ec5f3910c,
-        type: 3}
-      propertyPath: dialogueSprites.Array.data[1]
-      value: 
-      objectReference: {fileID: 21300000, guid: 281238cc8a8ade840850cf63f629ff89,
-        type: 3}
-    - target: {fileID: 3054369646960588295, guid: b62539c6f526b5b429d9ed0ec5f3910c,
-        type: 3}
-      propertyPath: dialogueSprites.Array.data[2]
-      value: 
-      objectReference: {fileID: 21300000, guid: 72d82f94dba5c8b42add4f55d287e718,
-        type: 3}
-    - target: {fileID: 3054369646960588295, guid: b62539c6f526b5b429d9ed0ec5f3910c,
-        type: 3}
-      propertyPath: dialogueSprites.Array.data[3]
-      value: 
-      objectReference: {fileID: 21300000, guid: 371ca07fccf2b5c45bbc68ee571d55a9,
-        type: 3}
     - target: {fileID: 4115574825712654990, guid: b62539c6f526b5b429d9ed0ec5f3910c,
         type: 3}
       propertyPath: logo
@@ -1068,11 +1024,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TutorialMessageUI
-      objectReference: {fileID: 0}
-    - target: {fileID: 7174919727600121212, guid: 009044b7d226a94418e8eb485dc5b04f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
