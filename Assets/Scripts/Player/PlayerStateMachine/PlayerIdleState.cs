@@ -21,8 +21,15 @@ public class PlayerIdleState : PlayerGroundedState
         StopAnimation(stateMachine.Player.AnimationData.IdleParameterHash);
     }
 
+
     public override void Update()
     {
         base.Update();
+
+        if (stateMachine.MovementInput != Vector2.zero)
+        {
+            OnMove();
+            return;
+        }
     }
 }

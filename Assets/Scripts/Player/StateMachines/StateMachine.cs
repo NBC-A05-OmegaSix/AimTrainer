@@ -17,6 +17,7 @@ public abstract class StateMachine
     public void HandleInput()
     {
         currentState?.HandleInput();
+
     }
 
     public void Update()

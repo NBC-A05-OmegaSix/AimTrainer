@@ -19,12 +19,12 @@ public class PlayerBaseState : IState
 
     public virtual void Enter()
     {
-        //AddInputActionsCallbacks();
+        AddInputActionsCallbacks();
     }
 
     public virtual void Exit()
     {
-        //RemoveInputActionsCallbacks();
+        RemoveInputActionsCallbacks();
     }
 
     public virtual void HandleInput()
@@ -43,6 +43,26 @@ public class PlayerBaseState : IState
     }
 
     protected virtual void OnMovementCanceled(InputAction.CallbackContext context)
+    {
+
+    }
+
+    protected virtual void AddInputActionsCallbacks()
+    {
+        PlayerInput input = stateMachine.Player.Input;
+        input.PlayerActions.Movement.canceled += OnMovementCanceled;
+        input.PlayerActions.Run.started += OnRunStarted;
+    }
+
+    protected virtual void RemoveInputActionsCallbacks()
+    {
+        PlayerInput input = stateMachine.Player.Input;
+        input.PlayerActions.Movement.canceled -= OnMovementCanceled;
+        input.PlayerActions.Run.started -= OnRunStarted;
+
+    }
+
+    protected virtual void OnRunStarted(InputAction.CallbackContext context)
     {
 
     }
