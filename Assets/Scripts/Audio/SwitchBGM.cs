@@ -8,8 +8,7 @@ public class SwitchBGM : MonoBehaviour
     {
         if(AudioManager.Instance != null)
         {
-            AudioManager.Instance.PlayerBGM(0, false);
-            AudioManager.Instance.PlayerBGM(1, true);
+            AudioManager.Instance.SwitchBGM(0, 1);
         }
     }
 }
