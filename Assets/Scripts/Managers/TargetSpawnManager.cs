@@ -16,7 +16,6 @@ public class TargetSpawnManager : Singleton<TargetSpawnManager>
     [SerializeField]
     private GameObject target;
 
-    [SerializeField]
     private int maxTargets;
 
     void Start()
@@ -26,6 +25,7 @@ public class TargetSpawnManager : Singleton<TargetSpawnManager>
         foreach (Transform position in _targetPos)
         {
             targetPositionGroup.Add(position);
+            maxTargets++;
         }
 
         CreateTargetPool();
@@ -43,7 +43,7 @@ public class TargetSpawnManager : Singleton<TargetSpawnManager>
         }
     }
 
-    private void CreateTarget(int index) // 
+    private void CreateTarget(int index)
     {
         var _target = GetTargetPosition();
 

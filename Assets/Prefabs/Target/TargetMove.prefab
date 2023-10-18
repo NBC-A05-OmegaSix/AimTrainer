@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 95196510618929016}
   - component: {fileID: -5966879920056557640}
   - component: {fileID: 1028259442519743792}
-  - component: {fileID: -5126421568311601725}
   m_Layer: 0
   m_Name: TargetMove
   m_TagString: Target
@@ -144,19 +143,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 1
   respawnTime: 2
---- !u!114 &-5126421568311601725
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1336443488165784}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 046a241b94d0f5d4a88257ae033447fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetPrefab: {fileID: 1336443488165784}
-  targetPosition: {fileID: 0}
-  moveSpeed: 4
-  moveDistance: 15
+  isMovable: 1
+  moveSpeed: 10
+  moveDistance: 10
