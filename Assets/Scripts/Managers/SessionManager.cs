@@ -2,77 +2,36 @@ using UnityEngine;
 
 public class SessionManager : MonoBehaviour
 {
-    public float sessionDuration = 180f; // 세션의 지속 시간
-    public float restartDelay = 5f; // 세션 재시작 딜레이
+    public ResultsUI resultsUI;
 
-    private float sessionTimer;
-    private bool isSessionActive = false;
-    private bool isRestarting = false;
-
-    public ResultsUI resultsUI; // ResultsUI 참조
-
-    void Start()
+    void OnTriggerEnter(Collider other)
     {
-        sessionTimer = sessionDuration;
-    }
-
-    void Update()
-    {
-        if (!isSessionActive && Input.GetKeyDown(KeyCode.Space))
+        if (other.CompareTag("Player"))
         {
-            StartSession();
-        }
-
-        if (isSessionActive)
-        {
-            sessionTimer -= Time.deltaTime;
-
-            if (sessionTimer <= 0)
+            if (other.CompareTag("Session1"))
             {
-                EndSession();
+                StartSession1();
             }
-        }
-
-        if (isRestarting)
-        {
-            restartDelay -= Time.deltaTime;
-
-            if (restartDelay <= 0)
+            else if (other.CompareTag("Session2"))
             {
-                StartSession();
-                isRestarting = false;
+                StartSession2();
+            }
+            else if (other.CompareTag("Session3"))
+            {
+                StartSession3();
             }
         }
     }
 
     public void StartSession1()
     {
-        Debug.Log("Starting Training Session 1");
-        StartSession();
     }
 
     public void StartSession2()
     {
-        Debug.Log("Starting Training Session 2");
-        StartSession();
     }
 
     public void StartSession3()
     {
-        Debug.Log("Starting Training Session 3");
-        StartSession();
-    }
-
-    private void StartSession()
-    {
-        isSessionActive = true;
-        sessionTimer = sessionDuration;
-    }
-
-    private void EndSession()
-    {
-        isSessionActive = false;
-        resultsUI.ActivateUI(); // ResultsUI 활성화
-        isRestarting = true;
     }
 }
