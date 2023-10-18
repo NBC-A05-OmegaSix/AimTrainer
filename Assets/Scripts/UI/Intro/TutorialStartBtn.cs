@@ -9,8 +9,15 @@ public class TutorialStartBtn : MonoBehaviour
 
     public void OnStartDialogue()
     {
-        tutorialMessageUI.SetActive(false);
-        dialogueUI.SetActive(true);
-        DialogueManager.Instance.DisplayDialogue();
+        if(dialogueUI != null && tutorialMessageUI != null)
+        {
+            tutorialMessageUI.SetActive(false);
+            dialogueUI.SetActive(true);
+        }
+        
+        if(DialogueManager.Instance != null)
+        {
+            DialogueManager.Instance.DisplayDialogue();
+        }
     }
 }
