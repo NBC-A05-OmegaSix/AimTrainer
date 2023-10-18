@@ -27,6 +27,7 @@ public class IntroManager : Singleton<IntroManager>
     {
         yield return new WaitForSeconds(1f);
 
+        AudioManager.Instance.PlaySFX(SoundEffects.Sfx.IntroLogo);
         yield return StartCoroutine(FadeIn(logo));
 
         yield return new WaitForSeconds(2f);
