@@ -22,7 +22,7 @@ public class DialogueManager : Singleton<DialogueManager>
 
     void Update()
     {
-        if (tutorialUI.activeInHierarchy && Input.GetKeyDown(KeyCode.Return))
+        if (tutorialUI != null && tutorialUI.activeInHierarchy && Input.GetKeyDown(KeyCode.Return))
             NextDialogue();
     }
 
