@@ -6,6 +6,7 @@ public class PlayerStateMachine : StateMachine
 {
     public Player Player { get; }
 
+    // PlayerStates 추가하는 곳
     public PlayerIdleState IdleState { get; }
     public PlayerWalkState WalkState { get; }
     public PlayerRunState RunState { get; }
