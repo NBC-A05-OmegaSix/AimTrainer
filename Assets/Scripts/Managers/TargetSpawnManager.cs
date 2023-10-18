@@ -18,7 +18,6 @@ public class TargetSpawnManager : Singleton<TargetSpawnManager>
 
     [SerializeField]
     private int maxTargets;
-    //private List<bool> isTargetExist;
 
     void Start()
     {
@@ -27,7 +26,6 @@ public class TargetSpawnManager : Singleton<TargetSpawnManager>
         foreach (Transform position in _targetPos)
         {
             targetPositionGroup.Add(position);
-            //isTargetExist.Add(false);
         }
 
         CreateTargetPool();
@@ -37,15 +35,23 @@ public class TargetSpawnManager : Singleton<TargetSpawnManager>
         InvokeRepeating(nameof(CreateTarget), 3.0f, 3.0f);
     }
 
-    private void FirstGenerateTarget()
+    private void FirstGenerateTarget() // MainScene 시작 시 초기 타겟 표시 활성화 메서드. 모든 타겟 위치에 타겟 활성화
     {
         for (int i = 0; i < maxTargets; i++)
         {
-            CreateTarget();
+            CreateTarget(i);
         }
     }
 
-    private void CreateTarget()
+    private void CreateTarget(int index) // 
+    {
+        var _target = GetTargetPosition();
+
+        _target?.transform.SetPositionAndRotation(targetPositionGroup[index].position, targetPositionGroup[index].rotation);
+        _target?.SetActive(true);
+    }
+
+    private void CreateTarget() // 타겟 비활성화 이후 재활성화 메서드
     {
         int index = Random.Range(0, targetPositionGroup.Count);
 
@@ -55,7 +61,7 @@ public class TargetSpawnManager : Singleton<TargetSpawnManager>
         _target?.SetActive(true);
     }
 
-    private GameObject GetTargetPosition()
+    private GameObject GetTargetPosition() // 타겟 활성화 여부 체크, 비활성화 시 해당 타겟 반환
     {
         foreach (var _target in targetPool)
         {
@@ -67,7 +73,7 @@ public class TargetSpawnManager : Singleton<TargetSpawnManager>
         return null;
     }
 
-    private void CreateTargetPool()
+    private void CreateTargetPool() // 타겟 풀 생성 메서드
     {
         for (int i = 0; i < maxTargets; i++)
         {
