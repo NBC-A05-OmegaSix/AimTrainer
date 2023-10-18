@@ -43,7 +43,7 @@ public class TargetSpawnManager : Singleton<TargetSpawnManager>
         }
     }
 
-    private void CreateTarget(int index) // 
+    private void CreateTarget(int index)
     {
         var _target = GetTargetPosition();
 
