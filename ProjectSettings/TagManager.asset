@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Target
+  - Bullet
+  - Session1
+  - Session2
+  - Session3
   layers:
   - Default
   - TransparentFX

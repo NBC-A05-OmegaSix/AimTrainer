@@ -19,6 +19,11 @@ public class ResultsUI : MonoBehaviour
         accuracyText.text = accuracy.ToString("F2") + "%";
     }
 
+    public void ActivateUI()
+    {
+        ReportMenu.SetActive(true);
+    }
+
     public void OnExitButtonClicked()
     {
         ReportMenu.SetActive(false);
