@@ -10,7 +10,7 @@ public class PlayerIdleState : PlayerGroundedState
 
     public override void Enter()
     {
-        stateMachine.MovementSpeedModifier = 1f;
+        stateMachine.MovementSpeedModifier = 0.5f;
         base.Enter();
         StartAnimation(stateMachine.Player.AnimationData.IdleParameterHash);
     }
