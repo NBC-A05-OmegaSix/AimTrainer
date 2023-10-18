@@ -10,6 +10,18 @@ public class ResultsUI : MonoBehaviour
     public TextMeshProUGUI accuracyText;
     public GameObject ReportMenu;
 
+    public Stats stats; 
+
+    void Start()
+    {
+        stats = FindObjectOfType<Stats>(); 
+    }
+
+    void Update()
+    {
+        DisplayResults(stats.totalShotsFired, stats.totalShotsHit); 
+    }
+
     public void DisplayResults(int totalShots, int totalHits)
     {
         totalShotsText.text = totalShots.ToString();
@@ -28,5 +40,4 @@ public class ResultsUI : MonoBehaviour
     {
         ReportMenu.SetActive(false);
     }
-
 }
