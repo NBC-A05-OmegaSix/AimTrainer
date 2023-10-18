@@ -8,6 +8,8 @@ public class GunManager : MonoBehaviour
     public GameObject prefab2; // 2번 프리팹
     private GameObject currentPrefab; // 현재 프리팹 인스턴스
 
+    private int currentPrefabType = 0;
+
     void Start()
     {
         // 초기 상태에서는 아무 프리팹도 생성되지 않도록 설정
@@ -17,16 +19,20 @@ public class GunManager : MonoBehaviour
     void Update()
     {
         // 1번 키를 누르면 1번 프리팹을 생성하고, 이미 다른 프리팹이 있다면 제거
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Alpha1) && currentPrefabType != 1)
         {
+            AudioManager.Instance.PlaySFX(SoundEffects.Sfx.CockingGun);
             DestroyCurrentPrefab();
             CreatePrefab(prefab1);
+            currentPrefabType = 1;
         }
         // 2번 키를 누르면 2번 프리팹을 생성하고, 이미 다른 프리팹이 있다면 제거
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        else if (Input.GetKeyDown(KeyCode.Alpha2) && currentPrefabType != 2)
         {
+            AudioManager.Instance.PlaySFX(SoundEffects.Sfx.CockingGun);
             DestroyCurrentPrefab();
             CreatePrefab(prefab2);
+            currentPrefabType = 2;
         }
     }
 
@@ -45,6 +51,8 @@ public class GunManager : MonoBehaviour
         if (currentPrefab != null)
         {
             Destroy(currentPrefab);
+            currentPrefab = null;
+            currentPrefabType = 0;
         }
     }
 }

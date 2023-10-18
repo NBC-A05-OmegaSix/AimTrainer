@@ -1,52 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1169429780949499287
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8519990916387391475}
-  - component: {fileID: 4115574825712654990}
-  m_Layer: 0
-  m_Name: IntroManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8519990916387391475
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1169429780949499287}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7823503654371733182}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4115574825712654990
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1169429780949499287}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4644d43716fa70244bbf1acf9e09e26d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  logo: {fileID: 0}
-  title: {fileID: 0}
-  tutorial: {fileID: 0}
 --- !u!1 &3323081170332653287
 GameObject:
   m_ObjectHideFlags: 0
@@ -93,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameText: {fileID: 0}
   DialoguesText: {fileID: 0}
+  tutorialUI: {fileID: 0}
 --- !u!1 &3361190762731813622
 GameObject:
   m_ObjectHideFlags: 0
@@ -147,14 +101,18 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f2b342933c2520645afc698bbd3707b8, type: 3}
   - {fileID: 8300000, guid: f2b342933c2520645afc698bbd3707b8, type: 3}
   - {fileID: 8300000, guid: f2b342933c2520645afc698bbd3707b8, type: 3}
-  - {fileID: 8300000, guid: 46543bc0f91759f4a9bb69eb568ec532, type: 3}
-  - {fileID: 8300000, guid: 8c35610700a18234ab5996e0ef1689e3, type: 3}
-  - {fileID: 8300000, guid: b3652615916b36844a4fc7a3dcb3a2bf, type: 3}
+  - {fileID: 8300000, guid: f5419c91b0bb6f44086fa333724f48f8, type: 3}
+  - {fileID: 8300000, guid: 4180aa4c6d1d66f4d9cd0794207b31a3, type: 3}
+  - {fileID: 8300000, guid: 56b5d11c6a0043f4d8ede6eeb3791ed8, type: 3}
+  - {fileID: 8300000, guid: aedd913e9df8a8b49a3f4660455e91f8, type: 3}
+  - {fileID: 8300000, guid: bc4b9ccdba22ffa4fb3b182532c0a4f8, type: 3}
+  - {fileID: 8300000, guid: ac205aeff153b0f47a288f60c510db25, type: 3}
   - {fileID: 8300000, guid: 843e8c15c081ff54c953dca3cfbb82f7, type: 3}
+  - {fileID: 8300000, guid: 253729c89ed43c647ba433bb2ce03bdc, type: 3}
   sfxVolume: 0.2
-  channels: 10
+  channels: 15
   dialogueClips:
-  - {fileID: 8300000, guid: 82b18ba2e4706c342941eed8bf0bde27, type: 3}
+  - {fileID: 8300000, guid: 6dfcadeccb02ff94dac7f04c6497b0d9, type: 3}
   - {fileID: 8300000, guid: 46ebd0b488450384288638031e60730e, type: 3}
   - {fileID: 8300000, guid: 40d3dbf70bc9d9c4a9fae9fdc7128cd7, type: 3}
   - {fileID: 8300000, guid: d63f523305a77c34398447870452e684, type: 3}
@@ -196,7 +154,6 @@ Transform:
   m_Children:
   - {fileID: 6008462521594431089}
   - {fileID: 5837089526062429338}
-  - {fileID: 8519990916387391475}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
