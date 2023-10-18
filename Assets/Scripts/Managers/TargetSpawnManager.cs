@@ -18,7 +18,7 @@ public class TargetSpawnManager : Singleton<TargetSpawnManager>
 
     [SerializeField]
     private int maxTargets;
-    //public List<bool> isTargetExist;
+    //private List<bool> isTargetExist;
 
     void Start()
     {
@@ -41,16 +41,8 @@ public class TargetSpawnManager : Singleton<TargetSpawnManager>
     {
         for (int i = 0; i < maxTargets; i++)
         {
-            CreateTarget(i);
+            CreateTarget();
         }
-    }
-
-    private void CreateTarget(int index)
-    {
-        var _target = GetTargetPosition();
-
-        _target?.transform.SetPositionAndRotation(targetPositionGroup[index].position, targetPositionGroup[index].rotation);
-        _target?.SetActive(true);
     }
 
     private void CreateTarget()
@@ -75,7 +67,7 @@ public class TargetSpawnManager : Singleton<TargetSpawnManager>
         return null;
     }
 
-    private void CreateTargetPool() // 타겟 풀 생성 & 초기 비활성화
+    private void CreateTargetPool()
     {
         for (int i = 0; i < maxTargets; i++)
         {

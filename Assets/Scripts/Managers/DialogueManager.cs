@@ -9,6 +9,8 @@ public class DialogueManager : Singleton<DialogueManager>
     [SerializeField] private TextMeshProUGUI nameText;
     [SerializeField] private TextMeshProUGUI DialoguesText;
 
+    [SerializeField] private GameObject tutorialUI;
+
     private DialogueList dialogueList;
     private int currentDialogueIndex = 0;
     void Start()
@@ -16,13 +18,11 @@ public class DialogueManager : Singleton<DialogueManager>
         string path = Application.dataPath + "/Dialogues/Dialogues.json";
         string json = File.ReadAllText(path);
         dialogueList = JsonUtility.FromJson<DialogueList>(json);
-
-        //DisplayDialogue();
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (tutorialUI != null && tutorialUI.activeInHierarchy && Input.GetKeyDown(KeyCode.Return))
             NextDialogue();
     }
 
