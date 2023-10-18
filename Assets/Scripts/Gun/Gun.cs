@@ -14,7 +14,7 @@ public class Gun : MonoBehaviour
     public float bulletLifetime = 2f; // 총알 생존 시간
     private bool isReloading = false; // 리로드 중인지 여부
     public float reloadTime = 3f; // 리로드 시간 (3초)
-    public float burstInterval;
+    public float burstInterval; 
     public enum FireMode
     {
         Single,
@@ -24,12 +24,21 @@ public class Gun : MonoBehaviour
     public FireMode currentFireMode = FireMode.Single;
     private bool canShoot = true;
     private bool isShooting = false;
+    public bool isSniperRifle;  // 스나이퍼 라이플 여부
+    private float sniperRifleCooldown = 1.0f; // 스나이퍼 라이플 재장전 시간
+    private bool isSniperCooldownActive = false;
+    private Animator gunAnimator; // 애니메이션 컴포넌트 참조
+   
+   
+    
 
 
     void Start()
     {
         currentAmmo = maxAmmo;
         isReloading = false;
+        Reload();
+        gunAnimator = GetComponent<Animator>();
     }
 
     void Update()
@@ -40,7 +49,7 @@ public class Gun : MonoBehaviour
         {
             if (currentAmmo > 0)
             {
-                isShooting = true;                    
+                isShooting = true;               
                 StartCoroutine(ShootSequence());
             }
             else
@@ -61,6 +70,12 @@ public class Gun : MonoBehaviour
             {
                 isShooting = true;
                 Shoot();
+                if (isSniperRifle && !isSniperCooldownActive)
+                {
+                    canShoot = false;
+                    isSniperCooldownActive = true;
+                    StartCoroutine(SniperRifleCooldown());
+                }
             }
             else
             {
@@ -94,22 +109,23 @@ void Shoot()
     {
         if (isShooting)
         {
+            
             if (currentFireMode == FireMode.Single)
             {
                 currentAmmo--;
-                // 총알 생성
-                GameObject bullet = Instantiate(bulletPrefab, gunBarrel.position, gunBarrel.rotation);
-
-                AudioManager.Instance.PlaySFX(SoundEffects.Sfx.FireAR);
-
-                Rigidbody bulletRigidbody = bullet.GetComponent<Rigidbody>();
-
-                // 총알 초기 속도 설정
-                bulletRigidbody.velocity = gunBarrel.forward * bulletSpeed;
-
-                // 총알 발사 후 처리 (예: 총알 소멸 타이머 설정)
-                Destroy(bullet, bulletLifetime);
-                ShootRay();
+                Camera mainCamera = Camera.main;
+                if (mainCamera != null)
+                {
+                    if (isSniperRifle)
+                    {
+                        gunAnimator.Play("SR Animation"); // 스니퍼 라이플 애니메이션 
+                    }
+                    else
+                    {
+                        gunAnimator.Play("AR Animation"); // 기본 발사 애니메이션 클립
+                    }
+                    StartCoroutine(ShootBurst(1));
+                }
             }
             else if (currentFireMode == FireMode.Burst3)
             {
@@ -119,15 +135,23 @@ void Shoot()
             }
             else if (currentFireMode == FireMode.FullAuto)
             {
+                currentAmmo--;
                 // 풀오토 모드에서는 무제한 발사 가능
-                currentAmmo--;  // 발사마다 총알 소비
-                // 총알 생성
-                GameObject bullet = Instantiate(bulletPrefab, gunBarrel.position, gunBarrel.rotation);
-                Rigidbody bulletRigidbody = bullet.GetComponent<Rigidbody>();
-                bulletRigidbody.velocity = gunBarrel.forward * bulletSpeed;
-                // 총알 발사 후 처리 (예: 총알 소멸 타이머 설정)
-                Destroy(bullet, bulletLifetime);
-                ShootRay();
+                Camera mainCamera = Camera.main;
+                if (mainCamera != null)
+                {
+                    // 메인 카메라의 정면 방향을 구합니다.
+                    Vector3 cameraForward = mainCamera.transform.forward;
+                    // 총알 생성
+                    GameObject bullet = Instantiate(bulletPrefab, gunBarrel.position, gunBarrel.rotation);
+                    Rigidbody bulletRigidbody = bullet.GetComponent<Rigidbody>();
+                    bulletRigidbody.velocity = gunBarrel.forward * bulletSpeed;
+                    // 총알 방향 설정
+                    bulletRigidbody.velocity = cameraForward * bulletSpeed;
+                    // 총알 발사 후 처리
+                    Destroy(bullet, bulletLifetime);
+                    ShootRay();
+                }
             }
         }
     }
@@ -143,11 +167,13 @@ IEnumerator ShootSequence()
     {
         if (currentAmmo > 0)
         {
+            gunAnimator.SetTrigger("Go");
             Shoot();
             yield return new WaitForSeconds(burstInterval);
         }
         else
         {
+            gunAnimator.SetTrigger("turn");
             Reload();
             break;
         }
@@ -175,40 +201,64 @@ IEnumerator ShootSequence()
     }
     IEnumerator ShootBurst(int shotNumber)
     {
-        canShoot = false;
-        for (int i = 0; i < shotNumber; i++)
+        Camera mainCamera = Camera.main;
+        if (mainCamera != null)
         {
-            GameObject bullet = Instantiate(bulletPrefab, gunBarrel.position, gunBarrel.rotation);            
-            Rigidbody bulletRigidbody = bullet.GetComponent<Rigidbody>();
-            bulletRigidbody.velocity = gunBarrel.forward * bulletSpeed;
-            Destroy(bullet, bulletLifetime);
-            ShootRay();
-            burstInterval = 0.1f;
-            if (i < shotNumber - 1)
+            // 메인 카메라의 정면 방향을 구합니다.
+            Vector3 cameraForward = mainCamera.transform.forward;
+            canShoot = false;
+            for (int i = 0; i < shotNumber; i++)
             {
-                yield return new WaitForSeconds(burstInterval);
+                GameObject bullet = Instantiate(bulletPrefab, gunBarrel.position, gunBarrel.rotation);
+                Rigidbody bulletRigidbody = bullet.GetComponent<Rigidbody>();
+                bulletRigidbody.velocity = gunBarrel.forward * bulletSpeed;
+                // 총알 방향 설정
+                bulletRigidbody.velocity = cameraForward * bulletSpeed;
+                Destroy(bullet, bulletLifetime);
+                ShootRay();
+                gunAnimator.Play("AR Animation Three");
+                burstInterval = 0.1f;
+                if (i < shotNumber - 1)
+                {
+                    yield return new WaitForSeconds(burstInterval);
+                }
             }
+
+            canShoot = true;
         }
-        canShoot = true;
     }
     void SwitchFireMode()
     {
-        if (currentFireMode == FireMode.Single)
+        // 스나이퍼 라이플이면 단발 모드만 가능
+        if (isSniperRifle)
         {
-            Debug.Log("3연사");
-            currentFireMode = FireMode.Burst3;
+            currentFireMode = FireMode.Single;
+            Debug.Log("스나이퍼 라이플은 단발 모드만 가능합니다.");
+            return;
         }
-        else if (currentFireMode == FireMode.Burst3)
+
+        // 다른 경우에 대한 모드 전환 코드는 그대로 유지
+        if (currentFireMode == FireMode.Single)
         {
             Debug.Log("연사");
             currentFireMode = FireMode.FullAuto;
         }
         else if (currentFireMode == FireMode.FullAuto)
         {
+            Debug.Log("3연사");
+            currentFireMode = FireMode.Burst3;
+        }
+        else if (currentFireMode == FireMode.Burst3)
+        {
             Debug.Log("단발");
             currentFireMode = FireMode.Single;
         }
     }
+    IEnumerator SniperRifleCooldown()
+    {
+        yield return new WaitForSeconds(sniperRifleCooldown);
+        canShoot = true;
+        isSniperCooldownActive = false;
+    }
 
 }
-
