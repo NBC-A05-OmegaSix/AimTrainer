@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
         AnimationData.Initialize();
 
         Rigidbody = GetComponent<Rigidbody>();
-        //Animator = GetComponentInChildren<Animator>();
+        Animator = GetComponentInChildren<Animator>();
         Input = GetComponent<PlayerInput>();
         Controller = GetComponent<CharacterController>();
 
