@@ -103,8 +103,7 @@ public class Gun : MonoBehaviour
             Debug.Log("리로딩 중");
             Reload();
         }
-
-        Debug.Log("Current Ammo: " + currentAmmo);
+        
 
         if (Input.GetKeyDown(KeyCode.B))
         {
@@ -114,6 +113,7 @@ public class Gun : MonoBehaviour
 
     void Shoot()
     {
+
         if (isReloading)
         {
             return;
@@ -127,20 +127,20 @@ public class Gun : MonoBehaviour
                 {
                     currentAmmo--;
                     Camera mainCamera = Camera.main;
-                    if (mainCamera != null)
-                    {
-                        if (isSniperRifle)
-                        {
-                            gunAnimator.Play("SR Animation"); // 스니퍼 라이플 애니메이션 
-                            AudioManager.Instance.PlaySFX(SoundEffects.Sfx.FireSR);
-                        }
-                        else
-                        {
-                            gunAnimator.Play("AR Animation"); // 기본 발사 애니메이션 클립
-                            AudioManager.Instance.PlaySFX(SoundEffects.Sfx.FireAR);
-                        }
+                     if (mainCamera != null)
+                     {
+                    //     if (isSniperRifle)
+                    //     {
+                    //         gunAnimator.Play("SR Animation"); // 스니퍼 라이플 애니메이션 
+                    //         AudioManager.Instance.PlaySFX(SoundEffects.Sfx.FireSR);
+                    //     }
+                    //     else
+                    //     {
+                    //         gunAnimator.Play("AR Animation"); // 기본 발사 애니메이션 클립
+                    //         AudioManager.Instance.PlaySFX(SoundEffects.Sfx.FireAR);
+                    //     }
                         StartCoroutine(ShootBurst(1));
-                    }
+                     }
                 }
                 else if (currentFireMode == FireMode.Burst3)
                 {
@@ -189,7 +189,7 @@ public class Gun : MonoBehaviour
 
             if (currentAmmo > 0)
             {
-                gunAnimator.SetTrigger("Go");
+                //gunAnimator.SetTrigger("Go");
 
                 if (!isReloading)
                 {
@@ -199,7 +199,7 @@ public class Gun : MonoBehaviour
             }
             else
             {
-                gunAnimator.SetTrigger("turn");
+                //gunAnimator.SetTrigger("turn");
                 Reload();
 
                 break;
@@ -265,7 +265,7 @@ public class Gun : MonoBehaviour
                 bulletRigidbody.velocity = cameraForward * bulletSpeed;
                 Destroy(bullet, bulletLifetime);
                 ShootRay();
-                gunAnimator.Play("AR Animation Three");
+                //gunAnimator.Play("AR Animation Three");
                 burstInterval = 0.2f;
                 if (i < shotNumber - 1)
                 {
