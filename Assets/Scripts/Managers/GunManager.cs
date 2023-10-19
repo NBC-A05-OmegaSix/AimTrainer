@@ -9,10 +9,12 @@ public class GunManager : MonoBehaviour
     private GameObject currentPrefab; // 현재 프리팹 인스턴스
 
     private int currentPrefabType = 0;
+    private Gun gunScript;
 
     void Start()
     {
         sniperRifle.SetActive(false);
+        gunScript = assaultRifle.GetComponent<Gun>();
     }
 
     void Update()
@@ -54,6 +56,7 @@ public class GunManager : MonoBehaviour
                 {
                     gunScript.RecentAmmo = gunScript.SRcurrentAmmo;
                     gunScript.RecentMaxAmmo = gunScript.SRAmmo;
+                    gunScript.CoroutineTest();
                 }
             }
         }
