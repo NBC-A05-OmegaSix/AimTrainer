@@ -137,7 +137,7 @@ public class Gun : MonoBehaviour
     void Shoot()
     {
 
-        if (isReloading)
+        if (isReloading || Time.timeScale == 0)
         {
             return;
         }
