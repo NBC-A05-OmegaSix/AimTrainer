@@ -261,8 +261,15 @@ public class Gun : MonoBehaviour
     IEnumerator ReloadCoroutine()
     {
         yield return new WaitForSeconds(reloadTime);
-
-        ARcurrentAmmo = ARAmmo;
+        if (isSniperRifle)
+        {
+            SRcurrentAmmo = SRAmmo;
+        }
+        else
+        {
+            ARcurrentAmmo = ARAmmo;
+        }
+        
         isReloading = false;
     }
 
