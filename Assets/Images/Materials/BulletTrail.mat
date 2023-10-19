@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Wall
+  m_Name: BulletTrail
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_Parent: {fileID: 2100000, guid: d0191015cc9a54e4ca518a11f5ea05a7, type: 2}
   m_ModifiedSerializedProperties: 0
@@ -35,8 +35,8 @@ Material:
     m_Ints: []
     m_Floats: []
     m_Colors:
-    - _BaseColor: {r: 0, g: 0.33846188, b: 1, a: 1}
-    - _Color: {r: 0, g: 0.33846185, b: 1, a: 1}
+    - _BaseColor: {r: 0.9339623, g: 0.81504977, b: 0.030838395, a: 1}
+    - _Color: {r: 0.9339623, g: 0.81504977, b: 0.030838395, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &3048670050211495437
 MonoBehaviour:
