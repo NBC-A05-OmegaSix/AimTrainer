@@ -81,8 +81,8 @@ public class Gun : MonoBehaviour
         }
         else
         {
-            Debug.Log("isloading"+ isReloading);
-            Debug.Log("canshoot"+ canShoot);
+            // Debug.Log("isloading"+ isReloading);
+            // Debug.Log("canshoot"+ canShoot);
             // 마우스 버튼을 누르는 순간 재장전 중이라면 Shoot() 함수를 호출하지 않음
             if (!isReloading && Input.GetMouseButtonDown(0) )
             {
@@ -177,11 +177,13 @@ public class Gun : MonoBehaviour
                 {
                     int shotNumber = Mathf.Min(ARcurrentAmmo, 3);
                     ARcurrentAmmo -= shotNumber;
+                    RecentAmmo-= shotNumber;
                     StartCoroutine(ShootBurst(shotNumber));
                 }
                 else if (currentFireMode == FireMode.FullAuto)
                 {
                     ARcurrentAmmo--;
+                    RecentAmmo--;
                     // 풀오토 모드에서는 무제한 발사 가능
                     Camera mainCamera = Camera.main;
                     if (mainCamera != null)
