@@ -41,6 +41,11 @@ public class Gun : MonoBehaviour
     private Animator gunAnimator; // 애니메이션 컴포넌트 참조
     private Coroutine countCoroutine = null; //코루틴 관련
 
+    public delegate void UpdateAmmoCount(int count); // UI 
+    public static event UpdateAmmoCount OnAmmoCountUpdate; // UI 
+
+    public int bulletCount; // 발사한 총알의 수를 저장할 변수
+
     void Start()
     {
         ARcurrentAmmo = ARAmmo;
@@ -49,6 +54,7 @@ public class Gun : MonoBehaviour
         RecentMaxAmmo = ARAmmo;
         isReloading = false;
         gunAnimator = GetComponent<Animator>();
+        bulletCount = 0; // UI
     }
 
     void Update()
@@ -138,6 +144,12 @@ public class Gun : MonoBehaviour
 
         if (RecentAmmo > 0)
         {
+            bulletCount++; // 발사한 총알 수 증가
+            if (OnAmmoCountUpdate != null)
+            {
+                OnAmmoCountUpdate(bulletCount); // UI 업데이트 이벤트 호출
+            }
+
             if (isShooting)
             {
                 if (currentFireMode == FireMode.Single)

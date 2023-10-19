@@ -12,6 +12,11 @@ public class Stats : MonoBehaviour
 
     private bool timerStarted = false;
 
+    void Start()
+    {
+        Gun.OnAmmoCountUpdate += UpdateAmmoCountUI;
+    }
+
     private void Update()
     {
         if (timerStarted)
@@ -35,15 +40,13 @@ public class Stats : MonoBehaviour
         timerStarted = true;
     }
 
-    public void IncrementShotsFired()
+    void OnDestroy()
     {
-        totalShotsFired++;
-        shotsFiredText.text = totalShotsFired.ToString(); // 발사 횟수 업데이트
+        Gun.OnAmmoCountUpdate -= UpdateAmmoCountUI;
     }
 
-    public void IncrementShotsHit()
+    void UpdateAmmoCountUI(int count)
     {
-        totalShotsHit++;
-        shotsHitText.text = totalShotsHit.ToString(); // 명중 횟수 업데이트
+        shotsFiredText.text = count.ToString(); // UI
     }
 }
