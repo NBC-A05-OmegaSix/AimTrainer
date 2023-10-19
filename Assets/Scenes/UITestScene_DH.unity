@@ -6044,11 +6044,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2069137044254430815, guid: f672b60c3e5bf2449abb65a3623e1b95,
-        type: 3}
-      propertyPath: m_text
-      value: 00
-      objectReference: {fileID: 0}
     - target: {fileID: 3833074754242543990, guid: f672b60c3e5bf2449abb65a3623e1b95,
         type: 3}
       propertyPath: m_Pivot.x
@@ -6154,30 +6149,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3851229888162281815, guid: f672b60c3e5bf2449abb65a3623e1b95,
-        type: 3}
-      propertyPath: m_text
-      value: 00
-      objectReference: {fileID: 0}
-    - target: {fileID: 5949513249193755120, guid: f672b60c3e5bf2449abb65a3623e1b95,
-        type: 3}
-      propertyPath: m_text
-      value: 000
-      objectReference: {fileID: 0}
-    - target: {fileID: 7325087280069349985, guid: f672b60c3e5bf2449abb65a3623e1b95,
-        type: 3}
-      propertyPath: mainMenuUI
-      value: 
-      objectReference: {fileID: 80999207}
     - target: {fileID: 8584643494472003713, guid: f672b60c3e5bf2449abb65a3623e1b95,
         type: 3}
       propertyPath: m_Name
       value: StatsUI
-      objectReference: {fileID: 0}
-    - target: {fileID: 8584643494472003713, guid: f672b60c3e5bf2449abb65a3623e1b95,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6279,11 +6254,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MainMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 3034344999390220249, guid: b650ce8da27f15e41a484286a2a084ee,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7114121125616014288, guid: b650ce8da27f15e41a484286a2a084ee,
         type: 3}
