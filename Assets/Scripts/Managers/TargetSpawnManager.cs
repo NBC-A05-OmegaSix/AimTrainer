@@ -19,6 +19,9 @@ public class TargetSpawnManager : Singleton<TargetSpawnManager>
     private int maxTargets;
     private Transform _targetPos;
 
+    public delegate void AllTargetsDestroyed();
+    public static event AllTargetsDestroyed OnAllTargetsDestroyed;
+
     void Start()
     {
         //Transform _targetPos = targetSpawnPositions.GetComponentInChildren<Transform>();
@@ -35,6 +38,17 @@ public class TargetSpawnManager : Singleton<TargetSpawnManager>
 
         //InvokeRepeating(nameof(CreateTarget), 3.0f, 3.0f); // MainScene 시작 시 타겟 생성 메서드
         SetTargetGroup();
+    }
+    private void CheckAllTargetsDestroyed()
+    {
+        foreach (var target in targetPool)
+        {
+            if (target.activeSelf)
+            {
+                return;
+            }
+        }
+        OnAllTargetsDestroyed?.Invoke();
     }
 
     private void FirstGenerateTarget() // MainScene 시작 시 초기 타겟 표시 활성화 메서드. 모든 타겟 위치에 타겟 활성화
@@ -102,7 +116,7 @@ public class TargetSpawnManager : Singleton<TargetSpawnManager>
 
         FirstGenerateTarget();
 
-        InvokeRepeating(nameof(CreateTarget), 3.0f, 3.0f);
+        //InvokeRepeating(nameof(CreateTarget), 3.0f, 3.0f);
     }
 
     private void ResetTargetGroup() // 이전의 타겟 그룹을 취소하고 현재 타겟 그룹이 적용되도록 초기화하는 메서드
