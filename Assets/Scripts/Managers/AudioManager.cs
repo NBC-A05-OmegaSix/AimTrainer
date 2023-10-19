@@ -1,7 +1,5 @@
-using JetBrains.Annotations;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using static SoundEffects;
 
 public class AudioManager : Singleton<AudioManager>
 {
@@ -80,9 +78,9 @@ public class AudioManager : Singleton<AudioManager>
         bgmPlayer.volume = bgmVolume;
     }
 
-    public void PlaySFX(SoundEffects.Sfx sfx)
+    public void PlaySFX(Sfx sfx)
     {
-        for(int index = 0; index < sfxPlayers.Length; index++)
+        for (int index = 0; index < sfxPlayers.Length; index++)
         {
             int loopIndex = (index * channelIndex) % sfxPlayers.Length;
 
@@ -91,19 +89,27 @@ public class AudioManager : Singleton<AudioManager>
                 continue;
             }
 
-            //int randIndex = 0; 
+            if (sfx == Sfx.RunLeftFoot)
+            {
+                sfx = (sfxPlayers[loopIndex].clip == sfxClips[(int)Sfx.RunLeftFoot])
+                    ? Sfx.RunRightFoot : Sfx.RunLeftFoot;
+            }
 
-            //if(sfx == SoundEffects.Sfx.FireAR || sfx == SoundEffects.Sfx.FireSR)
-            //{
-            //    randIndex = Random.Range(0, 2);
-            //}
+            if (sfx == Sfx.WalkLeftFoot)
+            {
+                sfx = (sfxPlayers[loopIndex].clip == sfxClips[(int)Sfx.WalkLeftFoot])
+                    ? Sfx.WalkRightFoot : Sfx.WalkLeftFoot;
+            }
 
             channelIndex = loopIndex;
             sfxPlayers[loopIndex].clip = sfxClips[(int)sfx];
+
             sfxPlayers[loopIndex].Play();
+
             break;
         }
     }
+
 
     public void SetSFXVolume(float sfxVolume)
     {

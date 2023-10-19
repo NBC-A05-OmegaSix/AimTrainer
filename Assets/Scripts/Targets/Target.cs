@@ -39,6 +39,7 @@ public class Target : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+            AudioManager.Instance.PlaySFX(SoundEffects.Sfx.Hit);
             //타겟 비활성화
             gameObject.SetActive(false);
         }
