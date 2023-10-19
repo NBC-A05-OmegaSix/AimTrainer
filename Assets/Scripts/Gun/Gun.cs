@@ -29,7 +29,7 @@ public class Gun : MonoBehaviour
     private bool isReloading = false; // 리로드 중인지 여부
     public float reloadTime = 7f; // 리로드 시간 (3초)
 
-    public float burstInterval;
+    private float burstInterval = 0.2f;
     public FireMode currentFireMode = FireMode.Single;
     private bool canShoot = true;
     private bool isShooting = false;
