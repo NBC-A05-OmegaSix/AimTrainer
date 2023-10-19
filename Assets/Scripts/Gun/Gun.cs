@@ -147,7 +147,7 @@ public class Gun : MonoBehaviour
             bulletCount++; // 발사한 총알 수 증가
             if (OnAmmoCountUpdate != null)
             {
-                OnAmmoCountUpdate(bulletCount); // UI 업데이트 이벤트 호출
+                OnAmmoCountUpdate(bulletCount); // UI 
             }
 
             if (isShooting)

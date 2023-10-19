@@ -11,26 +11,25 @@ public class ResultsUI : MonoBehaviour
     public GameObject ReportMenu;
     public GameObject MainMenu;
 
-
-    public Stats stats; 
+    private Gun gunScript; // Gun 스크립트 참조
 
     void Start()
     {
-        stats = FindObjectOfType<Stats>(); 
+        gunScript = FindObjectOfType<Gun>(); // Gun 스크립트 찾기
     }
 
     void Update()
     {
-        DisplayResults(stats.totalShotsFired, stats.totalShotsHit); 
+        // totalShotsText에 발사한 총알의 수를 표시
+        totalShotsText.text = gunScript.bulletCount.ToString();
+
+        // 그 외 결과를 표시하는 함수 호출
+        //DisplayResults(gunScript.bulletCount, gunScript.totalShotsHit);
     }
 
     public void DisplayResults(int totalShots, int totalHits)
     {
-        totalShotsText.text = totalShots.ToString();
-        totalHitsText.text = totalHits.ToString();
-        totalMissesText.text = (totalShots - totalHits).ToString();
-        float accuracy = totalShots > 0 ? ((float)totalHits / totalShots) * 100f : 0f;
-        accuracyText.text = accuracy.ToString("F2") + "%";
+        // 표시할 내용
     }
 
     public void ActivateUI()
