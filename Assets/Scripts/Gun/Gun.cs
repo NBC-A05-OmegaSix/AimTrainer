@@ -129,16 +129,16 @@ public class Gun : MonoBehaviour
                     Camera mainCamera = Camera.main;
                      if (mainCamera != null)
                      {
-                    //     if (isSniperRifle)
-                    //     {
-                    //         gunAnimator.Play("SR Animation"); // 스니퍼 라이플 애니메이션 
-                    //         AudioManager.Instance.PlaySFX(SoundEffects.Sfx.FireSR);
-                    //     }
-                    //     else
-                    //     {
-                    //         gunAnimator.Play("AR Animation"); // 기본 발사 애니메이션 클립
-                    //         AudioManager.Instance.PlaySFX(SoundEffects.Sfx.FireAR);
-                    //     }
+                    if (isSniperRifle)
+                    {
+                        gunAnimator.Play("SR Animation"); // 스니퍼 라이플 애니메이션 
+                        AudioManager.Instance.PlaySFX(SoundEffects.Sfx.FireSR);
+                    }
+                    else
+                    {
+                        gunAnimator.Play("AR Animation"); // 기본 발사 애니메이션 클립
+                        AudioManager.Instance.PlaySFX(SoundEffects.Sfx.FireAR);
+                    }
                         StartCoroutine(ShootBurst(1));
                      }
                 }
