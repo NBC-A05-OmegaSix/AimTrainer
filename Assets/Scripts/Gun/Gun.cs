@@ -39,6 +39,7 @@ public class Gun : MonoBehaviour
     private bool isSniperCooldownActive = false;
 
     private Animator gunAnimator; // 애니메이션 컴포넌트 참조
+    private Coroutine countCoroutine = null; //코루틴 관련
 
     void Start()
     {
@@ -52,10 +53,9 @@ public class Gun : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("ARcurrentAmmo: " + ARcurrentAmmo);
-        Debug.Log("SRcurrentAmmo: " + SRcurrentAmmo);
-        Debug.Log("RecentAmmo: " + RecentAmmo);
-        Debug.Log("RecentMaxAmmo: " + RecentMaxAmmo);
+        // Debug.Log("SRcurrentAmmo: " + SRcurrentAmmo);
+        // Debug.Log("RecentAmmo: " + RecentAmmo);
+        // Debug.Log("RecentMaxAmmo: " + RecentMaxAmmo);
         if (isReloading)
             return;
 
@@ -63,7 +63,7 @@ public class Gun : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0) && canShoot)
             {
-                if (ARcurrentAmmo > 0)
+                if (RecentAmmo > 0)
                 {
                     isShooting = true;
                     StartCoroutine(ShootSequence());
@@ -81,27 +81,40 @@ public class Gun : MonoBehaviour
         }
         else
         {
+            Debug.Log("isloading"+ isReloading);
+            Debug.Log("canshoot"+ canShoot);
             // 마우스 버튼을 누르는 순간 재장전 중이라면 Shoot() 함수를 호출하지 않음
-            if (!isReloading && Input.GetMouseButtonDown(0) && canShoot)
+            if (!isReloading && Input.GetMouseButtonDown(0) )
             {
-                if (ARcurrentAmmo > 0)
-                {
-                    isShooting = true;
-                    Shoot();
+               if(countCoroutine != null)
+               {
+                   StopCoroutine(countCoroutine);
+                   countCoroutine = null;
+                   canShoot = true;
+               }
 
-                    // 스나이퍼 라이플의 경우 추가적인 쿨다운 처리
-                    if (isSniperRifle && !isSniperCooldownActive)
-                    {
-                        canShoot = false;
-                        isSniperCooldownActive = true;
-                        StartCoroutine(SniperRifleCooldown());
-                    }
+               if (canShoot)
+               {
+                   if (RecentAmmo > 0)
+                   {
+                       isShooting = true;
+                       Shoot();
 
-                }
-                else
-                {
-                    Reload();
-                }
+                       // 스나이퍼 라이플의 경우 추가적인 쿨다운 처리
+                       if (isSniperRifle && !isSniperCooldownActive)
+                       {
+                           canShoot = false;
+                           isSniperCooldownActive = true;
+                           countCoroutine = StartCoroutine(SniperRifleCooldown());
+                           StartCoroutine(SniperRifleCooldown());
+                       }
+
+                   }
+                   else
+                   {
+                       Reload();
+                   }
+               }
             }
             if (Input.GetMouseButtonUp(0))
             {
@@ -131,7 +144,7 @@ public class Gun : MonoBehaviour
             return;
         }
 
-        if (ARcurrentAmmo > 0)
+        if (RecentAmmo > 0)
         {
             if (isShooting)
             {
@@ -147,22 +160,25 @@ public class Gun : MonoBehaviour
                         ARcurrentAmmo--;
                         RecentAmmo--;
                     }
-                    
+
                     Camera mainCamera = Camera.main;
-                     if (mainCamera != null)
-                     {
-                    if (isSniperRifle)
+                    if (mainCamera != null)
                     {
-                        gunAnimator.Play("SR Animation"); // 스니퍼 라이플 애니메이션 
-                        AudioManager.Instance.PlaySFX(SoundEffects.Sfx.FireSR);
-                    }
-                    else
-                    {
-                        gunAnimator.Play("AR Animation"); // 기본 발사 애니메이션 클립
-                        AudioManager.Instance.PlaySFX(SoundEffects.Sfx.FireAR);
-                    }
+                        Debug.Log("7");
+                        if (isSniperRifle)
+                        {
+                            gunAnimator.Play("SR Animation"); // 스니퍼 라이플 애니메이션 
+                            AudioManager.Instance.PlaySFX(SoundEffects.Sfx.FireSR);
+                        }
+                        else
+                        {
+                            gunAnimator.Play("AR Animation"); // 기본 발사 애니메이션 클립
+                            AudioManager.Instance.PlaySFX(SoundEffects.Sfx.FireAR);
+                        }
+
                         StartCoroutine(ShootBurst(1));
-                     }
+                        Debug.Log("8");
+                    }
                 }
                 else if (currentFireMode == FireMode.Burst3)
                 {
@@ -193,6 +209,10 @@ public class Gun : MonoBehaviour
                 }
             }
         }
+        else
+        {
+            Reload();
+        }
     }
 
     void StartShooting()
@@ -209,7 +229,7 @@ public class Gun : MonoBehaviour
                 break;
             }
 
-            if (ARcurrentAmmo > 0)
+            if (RecentAmmo > 0)
             {
                 //gunAnimator.SetTrigger("Go");
 
