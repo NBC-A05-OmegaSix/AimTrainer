@@ -139,7 +139,7 @@ public class Gun : MonoBehaviour
                 {
                     if (isSniperRifle)
                     {
-                        SRAmmo--;
+                        SRcurrentAmmo--;
                         RecentAmmo--;
                     }
                     else
@@ -264,14 +264,19 @@ public class Gun : MonoBehaviour
         if (isSniperRifle)
         {
             SRcurrentAmmo = SRAmmo;
+            RecentAmmo = SRcurrentAmmo;
+            RecentMaxAmmo = SRAmmo;
         }
         else
         {
             ARcurrentAmmo = ARAmmo;
+            RecentAmmo = ARcurrentAmmo;
+            RecentMaxAmmo = ARAmmo;
         }
-        
+
         isReloading = false;
     }
+
 
     IEnumerator ShootBurst(int shotNumber)
     {
