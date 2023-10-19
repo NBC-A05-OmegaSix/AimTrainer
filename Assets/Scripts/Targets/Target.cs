@@ -8,19 +8,21 @@ public class Target : MonoBehaviour
    
     private AudioSource audiosource;
 
-    public int maxHealth = 1; //Å¸°Ù Ã¼·Â
+    public int maxHealth = 1; //íƒ€ê²Ÿ ì²´ë ¥
     private int currentHealth;
-    public float respawnTime = 2.0f; //Å¸°Ù Àç»ı¼º ½Ã°£
+    public float respawnTime = 2.0f; //íƒ€ê²Ÿ ì¬ìƒì„± ì‹œê°„
     private Coroutine respawnCoroutine;
     [SerializeField]
     private bool isMovable;
 
     [Header("Moving Target")]
-    public float moveSpeed = 4.0f; //¿òÁ÷ÀÓ ¼Óµµ
-    public float moveDistance = 10.0f; //ÁÂ¿ì·Î ¿òÁ÷ÀÏ °Å¸®
+    public float moveSpeed = 4.0f; //ì›€ì§ì„ ì†ë„
+    public float moveDistance = 10.0f; //ì¢Œìš°ë¡œ ì›€ì§ì¼ ê±°ë¦¬
     private Vector3 initialPosition;
     private bool movingRight = true;
 
+    private bool isCounted = false; // UI target Count
+    public int totalShotsHit = 0;
 
     private void Awake()
     {
@@ -37,13 +39,17 @@ public class Target : MonoBehaviour
     {
         currentHealth -= damage;
 
-        if (currentHealth <= 0)
+        if (currentHealth <= 0 && !isCounted) // íƒ€ê²Ÿì´ ë¹„í™œì„±í™”ë˜ê³  ì•„ì§ ì¹´ìš´íŠ¸ë˜ì§€ ì•Šì•˜ì„ ë•Œ
         {
+            FindObjectOfType<Stats>().totalShotsHit++;
+            totalShotsHit++; // íƒ€ê²Ÿì´ ë¹„í™œì„±í™”ëœ íšŸìˆ˜ ì¦ê°€
+            isCounted = true; // ì¹´ìš´íŠ¸ë˜ì—ˆìŒì„ í‘œì‹œ
             AudioManager.Instance.PlaySFX(SoundEffects.Sfx.Hit);
-            //Å¸°Ù ºñÈ°¼ºÈ­
+            //íƒ€ê²Ÿ ë¹„í™œì„±í™”
             gameObject.SetActive(false);
         }
     }
+
     void Update()
     {
         if (isMovable)
@@ -55,7 +61,7 @@ public class Target : MonoBehaviour
 
     private void MoveTarget()
     {
-        //ÁÂ¿ì·Î ¿òÁ÷ÀÌ´Â ·ÎÁ÷
+        //ì¢Œìš°ë¡œ ì›€ì§ì´ëŠ” ë¡œì§
         if (movingRight)
         {
             transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
@@ -64,7 +70,7 @@ public class Target : MonoBehaviour
         {
             transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
         }
-        //ÀÏÁ¤ °Å¸®¸¦ ÀÌµ¿ÇÏ¸é ¹æÇâÀ» ¹Ù²Ş
+        //ì¼ì • ê±°ë¦¬ë¥¼ ì´ë™í•˜ë©´ ë°©í–¥ì„ ë°”ê¿ˆ
         if (Vector3.Distance(initialPosition, transform.position) > moveDistance)
         {
             if (movingRight) movingRight = false;
