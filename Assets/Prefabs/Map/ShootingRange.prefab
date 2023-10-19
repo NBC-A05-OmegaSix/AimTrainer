@@ -2364,6 +2364,7 @@ GameObject:
   - component: {fileID: 1187668853155824028}
   - component: {fileID: 536121182734998837}
   - component: {fileID: 8548316515898111166}
+  - component: {fileID: 8861299603126712343}
   m_Layer: 0
   m_Name: ShootingBlock3
   m_TagString: Untagged
@@ -3358,6 +3359,28 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1299474944697862556}
+  m_Mesh: {fileID: 0}
+--- !u!64 &8861299603126712343
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1299474944697862556}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
   m_Mesh: {fileID: 0}
 --- !u!1 &1674856139675327307
 GameObject:
@@ -16026,6 +16049,7 @@ GameObject:
   - component: {fileID: 3763231697358294767}
   - component: {fileID: 3859054517739679687}
   - component: {fileID: 4982081711277464015}
+  - component: {fileID: 814289452278119672}
   m_Layer: 0
   m_Name: ShootingBlock1
   m_TagString: Untagged
@@ -17019,6 +17043,28 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6573499432144812270}
   m_Mesh: {fileID: 0}
+--- !u!64 &814289452278119672
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6573499432144812270}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &6691062534361031654
 GameObject:
   m_ObjectHideFlags: 0
@@ -17157,6 +17203,7 @@ GameObject:
   - component: {fileID: 5825235421179455668}
   - component: {fileID: 6484000507308305146}
   - component: {fileID: 3463397728978998567}
+  - component: {fileID: 2793896583993838495}
   m_Layer: 0
   m_Name: ShootingBlock2
   m_TagString: Untagged
@@ -18149,6 +18196,28 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6751294762832863387}
+  m_Mesh: {fileID: 0}
+--- !u!64 &2793896583993838495
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6751294762832863387}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
   m_Mesh: {fileID: 0}
 --- !u!1 &6752878887193115882
 GameObject:
@@ -19949,6 +20018,7 @@ GameObject:
   - component: {fileID: 8926740703729282905}
   - component: {fileID: 4069735059449032376}
   - component: {fileID: 7974692044758916549}
+  - component: {fileID: 2718066483795974025}
   m_Layer: 0
   m_Name: ShootingBlock4
   m_TagString: Untagged
@@ -20943,6 +21013,28 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7099635693893121692}
+  m_Mesh: {fileID: 0}
+--- !u!64 &2718066483795974025
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7099635693893121692}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
   m_Mesh: {fileID: 0}
 --- !u!1 &7115588040377367474
 GameObject:
