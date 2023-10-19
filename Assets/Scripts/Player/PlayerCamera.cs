@@ -4,36 +4,27 @@ using UnityEngine;
 
 public class PlayerCamera : MonoBehaviour
 {
-    public float sesitivity = 500f;
+    [SerializeField]
+    private float sesitivity = 500f;
 
-    public float rotationX;
-    public float rotationY;
+    private float rotationX;
+    private float rotationY;
 
-
-    // Start is called before the first frame update
+    [SerializeField]
+    private GameObject cameraPosition;
     void Start()
     {
-        
     }
 
-    // Update is called once per frame
     void Update()
     {
         float mouseMoveX = Input.GetAxis("Mouse X");
         float mouseMoveY = Input.GetAxis("Mouse Y");
         rotationY += mouseMoveX * sesitivity * Time.deltaTime;
         rotationX += mouseMoveY * sesitivity * Time.deltaTime;
+        rotationX = Mathf.Clamp(rotationX, -35f, 35f);
 
-        if (rotationX > 35f)
-        {
-            rotationX = 35f;
-        }
-
-        if (rotationX < -30f)
-        {
-            rotationX = -30f;
-        }
-
-        transform.eulerAngles = new Vector3(-rotationX, rotationY, 0);
+        transform.eulerAngles = new Vector3(0, rotationY, 0);
+        cameraPosition.transform.localEulerAngles = new Vector3(-rotationX, 0, 0);
     }
 }
