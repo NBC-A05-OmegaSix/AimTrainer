@@ -20,6 +20,9 @@ public class StartButton : MonoBehaviour
         mainMenu.SetActive(false);
         statsUI.SetActive(true);
         ammosUI.SetActive(true);
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
     }
 
 }

@@ -11,8 +11,13 @@ public enum FireMode
 
 public class Gun : MonoBehaviour
 {
-    public int maxAmmo = 10; // 최대 장탄수
-    public int currentAmmo; // 현재 장탄수
+    // 현재 장탄수
+    public int ARAmmo = 30; // 최대 장탄수
+    public int SRAmmo = 10; // 최대 장탄수
+    public int ARcurrentAmmo; //현재 장탄수
+    public int SRcurrentAmmo; //현재 장탄수
+    public int RecentAmmo;
+    public int RecentMaxAmmo;
     public float damage = 10f; // 총의 데미지
     public float range = 100f; // 사정 거리
     public Transform gunBarrel; // 총구의 위치
@@ -37,13 +42,20 @@ public class Gun : MonoBehaviour
 
     void Start()
     {
-        currentAmmo = maxAmmo;
+        ARcurrentAmmo = ARAmmo;
+        SRcurrentAmmo = SRAmmo;
+        RecentAmmo = ARcurrentAmmo;
+        RecentMaxAmmo = ARAmmo;
         isReloading = false;
         gunAnimator = GetComponent<Animator>();
     }
 
     void Update()
     {
+        Debug.Log("ARcurrentAmmo: " + ARcurrentAmmo);
+        Debug.Log("SRcurrentAmmo: " + SRcurrentAmmo);
+        Debug.Log("RecentAmmo: " + RecentAmmo);
+        Debug.Log("RecentMaxAmmo: " + RecentMaxAmmo);
         if (isReloading)
             return;
 
@@ -51,7 +63,7 @@ public class Gun : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0) && canShoot)
             {
-                if (currentAmmo > 0)
+                if (ARcurrentAmmo > 0)
                 {
                     isShooting = true;
                     StartCoroutine(ShootSequence());
@@ -72,7 +84,7 @@ public class Gun : MonoBehaviour
             // 마우스 버튼을 누르는 순간 재장전 중이라면 Shoot() 함수를 호출하지 않음
             if (!isReloading && Input.GetMouseButtonDown(0) && canShoot)
             {
-                if (currentAmmo > 0)
+                if (ARcurrentAmmo > 0)
                 {
                     isShooting = true;
                     Shoot();
@@ -103,8 +115,7 @@ public class Gun : MonoBehaviour
             Debug.Log("리로딩 중");
             Reload();
         }
-
-        Debug.Log("Current Ammo: " + currentAmmo);
+        
 
         if (Input.GetKeyDown(KeyCode.B))
         {
@@ -114,43 +125,54 @@ public class Gun : MonoBehaviour
 
     void Shoot()
     {
+
         if (isReloading)
         {
             return;
         }
 
-        if (currentAmmo > 0)
+        if (ARcurrentAmmo > 0)
         {
             if (isShooting)
             {
                 if (currentFireMode == FireMode.Single)
                 {
-                    currentAmmo--;
-                    Camera mainCamera = Camera.main;
-                    if (mainCamera != null)
+                    if (isSniperRifle)
                     {
-                        if (isSniperRifle)
-                        {
-                            gunAnimator.Play("SR Animation"); // 스니퍼 라이플 애니메이션 
-                            AudioManager.Instance.PlaySFX(SoundEffects.Sfx.FireSR);
-                        }
-                        else
-                        {
-                            gunAnimator.Play("AR Animation"); // 기본 발사 애니메이션 클립
-                            AudioManager.Instance.PlaySFX(SoundEffects.Sfx.FireAR);
-                        }
-                        StartCoroutine(ShootBurst(1));
+                        SRAmmo--;
+                        RecentAmmo--;
                     }
+                    else
+                    {
+                        ARcurrentAmmo--;
+                        RecentAmmo--;
+                    }
+                    
+                    Camera mainCamera = Camera.main;
+                     if (mainCamera != null)
+                     {
+                    if (isSniperRifle)
+                    {
+                        gunAnimator.Play("SR Animation"); // 스니퍼 라이플 애니메이션 
+                        AudioManager.Instance.PlaySFX(SoundEffects.Sfx.FireSR);
+                    }
+                    else
+                    {
+                        gunAnimator.Play("AR Animation"); // 기본 발사 애니메이션 클립
+                        AudioManager.Instance.PlaySFX(SoundEffects.Sfx.FireAR);
+                    }
+                        StartCoroutine(ShootBurst(1));
+                     }
                 }
                 else if (currentFireMode == FireMode.Burst3)
                 {
-                    int shotNumber = Mathf.Min(currentAmmo, 3);
-                    currentAmmo -= shotNumber;
+                    int shotNumber = Mathf.Min(ARcurrentAmmo, 3);
+                    ARcurrentAmmo -= shotNumber;
                     StartCoroutine(ShootBurst(shotNumber));
                 }
                 else if (currentFireMode == FireMode.FullAuto)
                 {
-                    currentAmmo--;
+                    ARcurrentAmmo--;
                     // 풀오토 모드에서는 무제한 발사 가능
                     Camera mainCamera = Camera.main;
                     if (mainCamera != null)
@@ -187,9 +209,9 @@ public class Gun : MonoBehaviour
                 break;
             }
 
-            if (currentAmmo > 0)
+            if (ARcurrentAmmo > 0)
             {
-                gunAnimator.SetTrigger("Go");
+                //gunAnimator.SetTrigger("Go");
 
                 if (!isReloading)
                 {
@@ -199,7 +221,7 @@ public class Gun : MonoBehaviour
             }
             else
             {
-                gunAnimator.SetTrigger("turn");
+                //gunAnimator.SetTrigger("turn");
                 Reload();
 
                 break;
@@ -239,8 +261,15 @@ public class Gun : MonoBehaviour
     IEnumerator ReloadCoroutine()
     {
         yield return new WaitForSeconds(reloadTime);
-
-        currentAmmo = maxAmmo;
+        if (isSniperRifle)
+        {
+            SRcurrentAmmo = SRAmmo;
+        }
+        else
+        {
+            ARcurrentAmmo = ARAmmo;
+        }
+        
         isReloading = false;
     }
 
@@ -265,7 +294,7 @@ public class Gun : MonoBehaviour
                 bulletRigidbody.velocity = cameraForward * bulletSpeed;
                 Destroy(bullet, bulletLifetime);
                 ShootRay();
-                gunAnimator.Play("AR Animation Three");
+                //gunAnimator.Play("AR Animation Three");
                 burstInterval = 0.2f;
                 if (i < shotNumber - 1)
                 {

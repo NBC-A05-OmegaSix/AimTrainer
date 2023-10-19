@@ -8,24 +8,31 @@ public class UIManager : Singleton<UIManager>
     void Start()
     {
         mainMenu.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.F1))
         {
-            mainMenu.SetActive(!mainMenu.activeSelf);
+            ToggleMainMenu();
         }
+    }
+
+    void ToggleMainMenu()
+    {
+        mainMenu.SetActive(!mainMenu.activeSelf);
 
         if (mainMenu.activeSelf)
         {
-            Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
         else
         {
-            Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
     }
 }

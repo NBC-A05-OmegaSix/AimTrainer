@@ -1,9 +1,11 @@
 using UnityEngine;
+using TMPro;
 
 public class TargetSpawnTrigger : MonoBehaviour
 {
     public int targetPositionIndex;
     private bool triggered = false;
+    public TextMeshProUGUI sessionMessageText; // 해당 TextMeshProUGUI를 Inspector에서 할당해야 합니다.
 
     private void OnTriggerEnter(Collider other)
     {
@@ -19,10 +21,24 @@ public class TargetSpawnTrigger : MonoBehaviour
             }
 
             gameObject.SetActive(false); // 트리거 비활성화
+
+            if (sessionMessageText != null)
+            {
+                sessionMessageText.gameObject.SetActive(true);
+                Invoke("HideSessionMessage", 2f);
+            }
         }
     }
 
-    public void ActivateTrigger()  // 나중에 타겟스폰매니저에서 현재 타겟 수가 0이 되면 ActivateTrigger를 활성화시켜 트리거를 다시 활성화해야함.
+    private void HideSessionMessage()
+    {
+        if (sessionMessageText != null)
+        {
+            sessionMessageText.gameObject.SetActive(false);
+        }
+    }
+
+    public void ActivateTrigger()
     {
         triggered = false;
         gameObject.SetActive(true); // 트리거 활성화
