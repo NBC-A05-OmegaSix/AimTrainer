@@ -1,13 +1,9 @@
 using TMPro;
 using UnityEngine;
 
-public class Stats : MonoBehaviour
+public class Timer : MonoBehaviour
 {
-    public int totalShotsFired = 0;
-    public int totalShotsHit = 0;
-    public TextMeshProUGUI shotsFiredText;
-    public TextMeshProUGUI shotsHitText;
-    public TextMeshProUGUI timeText; // 시간을 표시할 UI 텍스트
+    public TextMeshProUGUI timeText;
     private float timeRemaining = 180f; // 초기 시간 (초 단위)
 
     private bool timerStarted = false;
@@ -20,7 +16,7 @@ public class Stats : MonoBehaviour
             {
                 timeRemaining -= Time.deltaTime;
                 int seconds = Mathf.RoundToInt(timeRemaining);
-                timeText.text = seconds.ToString(); // 시간 업데이트
+                timeText.text = seconds.ToString(); // 텍스트 업데이트
             }
             else
             {
@@ -33,17 +29,5 @@ public class Stats : MonoBehaviour
     public void StartTimer()
     {
         timerStarted = true;
-    }
-
-    public void IncrementShotsFired()
-    {
-        totalShotsFired++;
-        shotsFiredText.text = totalShotsFired.ToString(); // 발사 횟수 업데이트
-    }
-
-    public void IncrementShotsHit()
-    {
-        totalShotsHit++;
-        shotsHitText.text = totalShotsHit.ToString(); // 명중 횟수 업데이트
     }
 }
