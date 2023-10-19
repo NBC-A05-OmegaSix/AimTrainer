@@ -15,8 +15,8 @@ GameObject:
   - component: {fileID: 8581844645525859964}
   - component: {fileID: 2997948159523428560}
   m_Layer: 0
-  m_Name: Session3
-  m_TagString: Session3
+  m_Name: Session0
+  m_TagString: Session0
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -34,7 +34,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4934167401917443655
 MeshFilter:
@@ -147,3 +147,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPositionIndex: 0
+  sessionMessageText: {fileID: 0}
