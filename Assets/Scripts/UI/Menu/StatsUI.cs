@@ -48,5 +48,8 @@ public class Stats : MonoBehaviour
     void UpdateAmmoCountUI(int count)
     {
         shotsFiredText.text = count.ToString(); // UI
+        shotsHitText.text = totalShotsHit.ToString(); // Hit Count
     }
+
+
 }

@@ -21,6 +21,8 @@ public class Target : MonoBehaviour
     private Vector3 initialPosition;
     private bool movingRight = true;
 
+    private bool isCounted = false; // UI target Count
+    public int totalShotsHit = 0;
 
     private void Awake()
     {
@@ -37,12 +39,15 @@ public class Target : MonoBehaviour
     {
         currentHealth -= damage;
 
-        if (currentHealth <= 0)
+        if (currentHealth <= 0 && !isCounted) // 타겟이 비활성화되고 아직 카운트되지 않았을 때
         {
-            //타겟 비활성화
+            FindObjectOfType<Stats>().totalShotsHit++;
+            totalShotsHit++; // 타겟이 비활성화된 횟수 증가
+            isCounted = true; // 카운트되었음을 표시
             gameObject.SetActive(false);
         }
     }
+
     void Update()
     {
         if (isMovable)
