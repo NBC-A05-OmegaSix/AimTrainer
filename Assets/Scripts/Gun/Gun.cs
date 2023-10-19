@@ -86,12 +86,6 @@ public class Gun : MonoBehaviour
             // 마우스 버튼을 누르는 순간 재장전 중이라면 Shoot() 함수를 호출하지 않음
             if (!isReloading && Input.GetMouseButtonDown(0) )
             {
-               if(countCoroutine != null)
-               {
-                   StopCoroutine(countCoroutine);
-                   countCoroutine = null;
-                   canShoot = true;
-               }
 
                if (canShoot)
                {
@@ -99,13 +93,11 @@ public class Gun : MonoBehaviour
                    {
                        isShooting = true;
                        Shoot();
-
                        // 스나이퍼 라이플의 경우 추가적인 쿨다운 처리
                        if (isSniperRifle && !isSniperCooldownActive)
                        {
                            canShoot = false;
                            isSniperCooldownActive = true;
-                           countCoroutine = StartCoroutine(SniperRifleCooldown());
                            StartCoroutine(SniperRifleCooldown());
                        }
 
@@ -154,6 +146,7 @@ public class Gun : MonoBehaviour
                     {
                         SRcurrentAmmo--;
                         RecentAmmo--;
+                        countCoroutine = StartCoroutine(SniperRifleCooldown());
                     }
                     else
                     {
@@ -365,5 +358,16 @@ public class Gun : MonoBehaviour
         yield return new WaitForSeconds(sniperRifleCooldown);
         canShoot = true;
         isSniperCooldownActive = false;
+    }
+
+    public void CoroutineTest()
+    {
+        if(countCoroutine != null)
+        {
+            StopCoroutine(countCoroutine);
+            countCoroutine = null;
+            canShoot = true;
+            isSniperCooldownActive = false;
+        }
     }
 }
