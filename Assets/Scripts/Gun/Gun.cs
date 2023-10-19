@@ -188,8 +188,9 @@ public class Gun : MonoBehaviour
                 else if (currentFireMode == FireMode.Burst3)
                 {
                     int shotNumber = Mathf.Min(ARcurrentAmmo, 3);
-                    ARcurrentAmmo -= shotNumber;
-                    RecentAmmo-= shotNumber;
+                    ARcurrentAmmo -= 3; // 3발 발사 3 감소
+                    RecentAmmo -= 3; // 3발 발사 3 감소
+                    bulletCount += 2; // 기본적으로 쏠때 +1되고 Brust에는 +2 추가
                     StartCoroutine(ShootBurst(shotNumber));
                 }
                 else if (currentFireMode == FireMode.FullAuto)
