@@ -67,8 +67,7 @@ public class Target : MonoBehaviour
         //일정 거리를 이동하면 방향을 바꿈
         if (Vector3.Distance(initialPosition, transform.position) > moveDistance)
         {
-            if (movingRight) movingRight = false;
-            else movingRight = true;
+            movingRight = true ? false : true;
         }
     }
 }
