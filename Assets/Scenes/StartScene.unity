@@ -658,26 +658,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1096012807584221341, guid: b62539c6f526b5b429d9ed0ec5f3910c,
-        type: 3}
-      propertyPath: channels
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 1096012807584221341, guid: b62539c6f526b5b429d9ed0ec5f3910c,
-        type: 3}
-      propertyPath: sfxClips.Array.size
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 1096012807584221341, guid: b62539c6f526b5b429d9ed0ec5f3910c,
-        type: 3}
-      propertyPath: sfxClips.Array.data[13]
-      value: 
-      objectReference: {fileID: 8300000, guid: 253729c89ed43c647ba433bb2ce03bdc, type: 3}
-    - target: {fileID: 1096012807584221341, guid: b62539c6f526b5b429d9ed0ec5f3910c,
-        type: 3}
-      propertyPath: sfxClips.Array.data[14]
-      value: 
-      objectReference: {fileID: 8300000, guid: 253729c89ed43c647ba433bb2ce03bdc, type: 3}
     - target: {fileID: 3054369646960588295, guid: b62539c6f526b5b429d9ed0ec5f3910c,
         type: 3}
       propertyPath: nameText

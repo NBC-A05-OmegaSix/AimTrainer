@@ -353,6 +353,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 544408453456870204, guid: 3543011d4cf943f499dce56f4520b225,
+        type: 3}
+      propertyPath: gunManager
+      value: 
+      objectReference: {fileID: 306401950}
     - target: {fileID: 7188365468196393464, guid: 3543011d4cf943f499dce56f4520b225,
         type: 3}
       propertyPath: m_Pivot.x
