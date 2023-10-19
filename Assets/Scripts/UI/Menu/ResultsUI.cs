@@ -8,6 +8,8 @@ public class ResultsUI : MonoBehaviour
     public TextMeshProUGUI totalHitsText;
     public TextMeshProUGUI totalMissesText;
     public TextMeshProUGUI accuracyText;
+    public TextMeshProUGUI timeText;
+
     public GameObject ReportMenu;
     public GameObject MainMenu;
 
@@ -31,7 +33,10 @@ public class ResultsUI : MonoBehaviour
         totalMissesText.text = (gunScript.bulletCount - statsScript.totalShotsHit).ToString();
 
         float accuracy = statsScript.totalShotsHit > 0 ? ((float)statsScript.totalShotsHit / gunScript.bulletCount) * 100f : 0f;
-        accuracyText.text = accuracy.ToString("F2") + "%";
+        accuracyText.text = accuracy.ToString("F1") + "%";
+
+        timeText.text = statsScript.GetElapsedTime().ToString("F1");
+
     }
 
     public void DisplayResults(int totalShots, int totalHits)
