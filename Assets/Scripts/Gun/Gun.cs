@@ -136,70 +136,73 @@ public class Gun : MonoBehaviour
             return;
         }
 
-        if (RecentAmmo > 0 && isShooting)
-        { 
-            if (currentFireMode == FireMode.Single)
+        if (RecentAmmo > 0)
+        {
+            if (isShooting)
             {
-                if (isSniperRifle)
+                if (currentFireMode == FireMode.Single)
                 {
-                    SRcurrentAmmo--;
-                    RecentAmmo--;
-                    countCoroutine = StartCoroutine(SniperRifleCooldown());
-                }
-                else
-                {
-                    ARcurrentAmmo--;
-                    RecentAmmo--;
-                }
-
-                Camera mainCamera = Camera.main;
-                if (mainCamera != null)
-                {
-                    Debug.Log("7");
                     if (isSniperRifle)
                     {
-                        gunAnimator.Play("SR Animation"); // 스니퍼 라이플 애니메이션 
-                        AudioManager.Instance.PlaySFX(SoundEffects.Sfx.FireSR);
+                        SRcurrentAmmo--;
+                        RecentAmmo--;
+                        countCoroutine = StartCoroutine(SniperRifleCooldown());
                     }
                     else
                     {
-                        gunAnimator.Play("AR Animation"); // 기본 발사 애니메이션 클립
-                        AudioManager.Instance.PlaySFX(SoundEffects.Sfx.FireAR);
+                        ARcurrentAmmo--;
+                        RecentAmmo--;
                     }
-                    StartCoroutine(ShootBurst(1));
-                    Debug.Log("8");
+
+                    Camera mainCamera = Camera.main;
+                    if (mainCamera != null)
+                    {
+                        Debug.Log("7");
+                        if (isSniperRifle)
+                        {
+                            gunAnimator.Play("SR Animation"); // 스니퍼 라이플 애니메이션 
+                            AudioManager.Instance.PlaySFX(SoundEffects.Sfx.FireSR);
+                        }
+                        else
+                        {
+                            gunAnimator.Play("AR Animation"); // 기본 발사 애니메이션 클립
+                            AudioManager.Instance.PlaySFX(SoundEffects.Sfx.FireAR);
+                        }
+
+                        StartCoroutine(ShootBurst(1));
+                        Debug.Log("8");
+                    }
                 }
-            }
-            else if (currentFireMode == FireMode.Burst3)
-            {
-                int shotNumber = Mathf.Min(ARcurrentAmmo, 3);
-                ARcurrentAmmo -= shotNumber;
-                RecentAmmo-= shotNumber;
-                StartCoroutine(ShootBurst(shotNumber));
-            }
-            else if (currentFireMode == FireMode.FullAuto)
-            {
-                ARcurrentAmmo--;
-                RecentAmmo--;
-                // 풀오토 모드에서는 무제한 발사 가능
-                Camera mainCamera = Camera.main;
-                if (mainCamera != null)
+                else if (currentFireMode == FireMode.Burst3)
                 {
-                    // 메인 카메라의 정면 방향을 구합니다.
-                    Vector3 cameraForward = mainCamera.transform.forward;
-                    // 총알 생성
-                    GameObject bullet = Instantiate(bulletPrefab, gunBarrel.position, gunBarrel.rotation);
-                    AudioManager.Instance.PlaySFX(SoundEffects.Sfx.FireAR);
-                    Rigidbody bulletRigidbody = bullet.GetComponent<Rigidbody>();
-                    bulletRigidbody.velocity = gunBarrel.forward * bulletSpeed;
-                    // 총알 방향 설정
-                    bulletRigidbody.velocity = cameraForward * bulletSpeed;
-                    // 총알 발사 후 처리
-                    Destroy(bullet, bulletLifetime);
-                    ShootRay();
+                    int shotNumber = Mathf.Min(ARcurrentAmmo, 3);
+                    ARcurrentAmmo -= shotNumber;
+                    RecentAmmo-= shotNumber;
+                    StartCoroutine(ShootBurst(shotNumber));
+                }
+                else if (currentFireMode == FireMode.FullAuto)
+                {
+                    ARcurrentAmmo--;
+                    RecentAmmo--;
+                    // 풀오토 모드에서는 무제한 발사 가능
+                    Camera mainCamera = Camera.main;
+                    if (mainCamera != null)
+                    {
+                        // 메인 카메라의 정면 방향을 구합니다.
+                        Vector3 cameraForward = mainCamera.transform.forward;
+                        // 총알 생성
+                        GameObject bullet = Instantiate(bulletPrefab, gunBarrel.position, gunBarrel.rotation);
+                        AudioManager.Instance.PlaySFX(SoundEffects.Sfx.FireAR);
+                        Rigidbody bulletRigidbody = bullet.GetComponent<Rigidbody>();
+                        bulletRigidbody.velocity = gunBarrel.forward * bulletSpeed;
+                        // 총알 방향 설정
+                        bulletRigidbody.velocity = cameraForward * bulletSpeed;
+                        // 총알 발사 후 처리
+                        Destroy(bullet, bulletLifetime);
+                        ShootRay();
+                    }
                 }
             }
-            
         }
         else
         {
@@ -228,7 +231,7 @@ public class Gun : MonoBehaviour
                 if (!isReloading)
                 {
                     Shoot();
-                    yield return new WaitForSeconds(0.2f);
+                    yield return new WaitForSeconds(burstInterval);
                 }
             }
             else
@@ -312,7 +315,11 @@ public class Gun : MonoBehaviour
                 Destroy(bullet, bulletLifetime);
                 ShootRay();
                 //gunAnimator.Play("AR Animation Three");
-                yield return new WaitForSeconds(0.2f);
+                burstInterval = 0.2f;
+                if (i < shotNumber - 1)
+                {
+                    yield return new WaitForSeconds(burstInterval);
+                }
             }
 
             canShoot = true;
