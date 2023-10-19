@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class ResultsUI : MonoBehaviour
 {
@@ -46,11 +47,14 @@ public class ResultsUI : MonoBehaviour
 
     public void ActivateUI()
     {
+        Time.timeScale = 0;
+
         ReportMenu.SetActive(true);
     }
 
     public void OnExitButtonClicked()
     {
+        SceneManager.LoadScene("MainScene");
         ReportMenu.SetActive(false);
         MainMenu.SetActive(false);
     }

@@ -1,13 +1,14 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIManager : Singleton<UIManager>
+public class GameManager : Singleton<GameManager>
 {
     public GameObject mainMenu;
     public GameObject resultUI; // 추가된 부분
 
     void Start()
     {
+        Time.timeScale = 1;
         mainMenu.SetActive(false);
         resultUI.SetActive(false); // 추가된 부분
         Cursor.lockState = CursorLockMode.Locked;
@@ -25,6 +26,7 @@ public class UIManager : Singleton<UIManager>
         GameObject[] targets = GameObject.FindGameObjectsWithTag("Target");
         if (targets.Length == 0)
         {
+            Time.timeScale = 0;
             ShowResultUI();
         }
     }
