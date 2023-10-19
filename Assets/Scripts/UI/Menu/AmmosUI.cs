@@ -14,8 +14,8 @@ public class AmmoUI : MonoBehaviour
 
     void Update()
     {
-            currentAmmoText.text = gun.currentAmmo.ToString();
-            maxAmmoText.text = gun.maxAmmo.ToString();
+            currentAmmoText.text = gun.RecentAmmo.ToString();
+            maxAmmoText.text = gun.RecentMaxAmmo.ToString();
         shootingStateText.text = gun.currentFireMode.ToString();
 
     }
