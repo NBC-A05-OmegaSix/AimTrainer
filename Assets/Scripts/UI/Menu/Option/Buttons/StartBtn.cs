@@ -15,6 +15,7 @@ public class StartButton : MonoBehaviour
 
     public void OnStartButtonClicked()
     {
+        Time.timeScale = 1f;
         // 게임 시작 로직
         Debug.Log("Game is starting...");
         mainMenu.SetActive(false);
