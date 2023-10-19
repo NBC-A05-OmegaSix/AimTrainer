@@ -11,6 +11,7 @@ public class PlayerGroundedState : PlayerBaseState
 
     public override void Enter()
     {
+        AudioManager.Instance.PlaySFX(SoundEffects.Sfx.Land);
         base.Enter();
     }
 

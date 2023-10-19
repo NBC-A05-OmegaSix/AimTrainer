@@ -491,41 +491,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1096012807584221341, guid: b62539c6f526b5b429d9ed0ec5f3910c,
-        type: 3}
-      propertyPath: sfxClips.Array.size
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 1096012807584221341, guid: b62539c6f526b5b429d9ed0ec5f3910c,
-        type: 3}
-      propertyPath: sfxClips.Array.data[7]
-      value: 
-      objectReference: {fileID: 8300000, guid: 6f7041a1c4f54d34aaa17cff8d8bf1c1, type: 3}
-    - target: {fileID: 1096012807584221341, guid: b62539c6f526b5b429d9ed0ec5f3910c,
-        type: 3}
-      propertyPath: sfxClips.Array.data[8]
-      value: 
-      objectReference: {fileID: 8300000, guid: aedd913e9df8a8b49a3f4660455e91f8, type: 3}
-    - target: {fileID: 1096012807584221341, guid: b62539c6f526b5b429d9ed0ec5f3910c,
-        type: 3}
-      propertyPath: sfxClips.Array.data[9]
-      value: 
-      objectReference: {fileID: 8300000, guid: bc4b9ccdba22ffa4fb3b182532c0a4f8, type: 3}
-    - target: {fileID: 1096012807584221341, guid: b62539c6f526b5b429d9ed0ec5f3910c,
-        type: 3}
-      propertyPath: sfxClips.Array.data[10]
-      value: 
-      objectReference: {fileID: 8300000, guid: 9b5ab6fb4593d1f4fac0fbfbdb293cbb, type: 3}
-    - target: {fileID: 1096012807584221341, guid: b62539c6f526b5b429d9ed0ec5f3910c,
-        type: 3}
-      propertyPath: sfxClips.Array.data[11]
-      value: 
-      objectReference: {fileID: 8300000, guid: 843e8c15c081ff54c953dca3cfbb82f7, type: 3}
-    - target: {fileID: 1096012807584221341, guid: b62539c6f526b5b429d9ed0ec5f3910c,
-        type: 3}
-      propertyPath: sfxClips.Array.data[12]
-      value: 
-      objectReference: {fileID: 8300000, guid: 253729c89ed43c647ba433bb2ce03bdc, type: 3}
     - target: {fileID: 7789096145089571505, guid: b62539c6f526b5b429d9ed0ec5f3910c,
         type: 3}
       propertyPath: m_Name
