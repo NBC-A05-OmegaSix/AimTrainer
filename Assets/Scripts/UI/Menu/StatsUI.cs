@@ -47,4 +47,9 @@ public class Stats : MonoBehaviour
     {
         timerStarted = true; // 타이머 시작
     }
+    public float GetElapsedTime()
+    {
+        return elapsedTime;
+    }
+
 }
