@@ -50,7 +50,7 @@ public class Target : MonoBehaviour
             MoveTarget();
         }
 
-        Debug.Log(Vector3.Distance(initialPosition, transform.position).ToString());
+       // Debug.Log(Vector3.Distance(initialPosition, transform.position).ToString());
     }
 
     private void MoveTarget()

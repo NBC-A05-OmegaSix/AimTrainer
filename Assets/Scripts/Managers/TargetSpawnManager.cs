@@ -51,9 +51,9 @@ public class TargetSpawnManager : Singleton<TargetSpawnManager>
         _target?.SetActive(true);
     }
 
-    private void CreateTarget() // 타겟 비활성화 이후 재활성화 메서드
+    private void CreateTarget() // 타겟 비활성화 이후 재활성화 메서드, 현재 비활성화된 타겟이 재활성화될 때 다른 위치에서 다른 타겟과 겹친 상태에서 활성화되는 버그 발생
     {
-        int index = Random.Range(0, targetPositionGroup.Count);
+        int index = Random.Range(0, targetPositionGroup.Count); // 얘때문
 
         var _target = GetTargetPosition();
 
