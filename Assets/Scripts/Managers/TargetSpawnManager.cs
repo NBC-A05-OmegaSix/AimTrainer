@@ -101,8 +101,6 @@ public class TargetSpawnManager : Singleton<TargetSpawnManager>
         CreateTargetPool();
 
         FirstGenerateTarget();
-
-        InvokeRepeating(nameof(CreateTarget), 3.0f, 3.0f);
     }
 
     private void ResetTargetGroup() // 이전의 타겟 그룹을 취소하고 현재 타겟 그룹이 적용되도록 초기화하는 메서드

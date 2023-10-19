@@ -46,7 +46,7 @@ public class AudioManager : Singleton<AudioManager>
 
     public void PlayBGM(int index, bool isPlay)
     {
-        if(index >= 0 && index < bgmClips.Length)
+        if (index >= 0 && index < bgmClips.Length)
         {
             if (isPlay)
             {

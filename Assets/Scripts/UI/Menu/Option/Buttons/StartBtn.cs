@@ -16,6 +16,7 @@ public class StartButton : MonoBehaviour
     public void OnStartButtonClicked()
     {
         Time.timeScale = 1f;
+        AudioManager.Instance.PlayBGM(0, true);
         // 게임 시작 로직
         Debug.Log("Game is starting...");
         mainMenu.SetActive(false);
@@ -23,7 +24,6 @@ public class StartButton : MonoBehaviour
         ammosUI.SetActive(true);
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-
     }
 
 }

@@ -111,7 +111,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 843e8c15c081ff54c953dca3cfbb82f7, type: 3}
   - {fileID: 8300000, guid: 253729c89ed43c647ba433bb2ce03bdc, type: 3}
   sfxVolume: 0.2
-  channels: 20
+  channels: 50
   dialogueClips:
   - {fileID: 8300000, guid: 6dfcadeccb02ff94dac7f04c6497b0d9, type: 3}
   - {fileID: 8300000, guid: 46ebd0b488450384288638031e60730e, type: 3}
