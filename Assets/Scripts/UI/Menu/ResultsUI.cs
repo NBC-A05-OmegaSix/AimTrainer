@@ -9,6 +9,8 @@ public class ResultsUI : MonoBehaviour
     public TextMeshProUGUI totalMissesText;
     public TextMeshProUGUI accuracyText;
     public GameObject ReportMenu;
+    public GameObject MainMenu;
+
 
     public Stats stats; 
 
@@ -39,5 +41,7 @@ public class ResultsUI : MonoBehaviour
     public void OnExitButtonClicked()
     {
         ReportMenu.SetActive(false);
+        MainMenu.SetActive(false);
+
     }
 }
