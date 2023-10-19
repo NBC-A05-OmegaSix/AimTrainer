@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 4357461330854902}
   - component: {fileID: 212431280131125774}
   - component: {fileID: 95196510618929016}
-  - component: {fileID: -5966879920056557640}
   - component: {fileID: 1028259442519743792}
+  - component: {fileID: -5966879920056557640}
   m_Layer: 0
   m_Name: TargetMove
   m_TagString: Target
@@ -108,6 +108,23 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1028259442519743792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1336443488165784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0423dd1a772ab074cb83d3239a90cb89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 1
+  respawnTime: 2
+  isMovable: 1
+  moveSpeed: 10
+  moveDistance: 10
 --- !u!65 &-5966879920056557640
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -129,20 +146,3 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3, y: 3, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1028259442519743792
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1336443488165784}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0423dd1a772ab074cb83d3239a90cb89, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 1
-  respawnTime: 2
-  isMovable: 1
-  moveSpeed: 10
-  moveDistance: 10

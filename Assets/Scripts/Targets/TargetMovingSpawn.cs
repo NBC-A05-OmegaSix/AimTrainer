@@ -41,9 +41,10 @@ public class TargetMovingSpawn : MonoBehaviour
             transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
         }
         //일정 거리를 이동하면 방향을 바꿈
-        if (Vector3.Distance(initialPosition, transform.position) >= moveDistance)
+        if (Vector3.Distance(initialPosition, transform.position) > moveDistance)
         {
-            movingRight = !movingRight;
+            if (movingRight) movingRight = false;
+            else movingRight = true;
         }
     }
 }
