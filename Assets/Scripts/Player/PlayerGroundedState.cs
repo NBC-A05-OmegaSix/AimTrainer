@@ -12,13 +12,11 @@ public class PlayerGroundedState : PlayerBaseState
     public override void Enter()
     {
         base.Enter();
-        StartAnimation(stateMachine.Player.AnimationData.GroundParameterHash);
     }
 
     public override void Exit()
     {
         base.Exit();
-        StopAnimation(stateMachine.Player.AnimationData.GroundParameterHash);
     }
 
     public override void Update()
@@ -41,6 +39,11 @@ public class PlayerGroundedState : PlayerBaseState
         stateMachine.ChangeState(stateMachine.IdleState);
 
         base.OnMovementCanceled(context);
+    }
+
+    protected override void OnJumpStarted(InputAction.CallbackContext context)
+    {
+        stateMachine.ChangeState(stateMachine.JumpState);
     }
 
     protected virtual void OnMove()
