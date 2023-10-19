@@ -5,7 +5,7 @@ using UnityEngine;
 public class GunManager : MonoBehaviour
 {
     public GameObject assaultRifle; // 어설트 라이플 오브젝트
-    public GameObject sniperRifle;   // 스나이퍼 라이플 오브젝트
+    public GameObject sniperRifle;   // 스나이퍼 라이플 오븝젝트
     private GameObject currentPrefab; // 현재 프리팹 인스턴스
 
     private int currentPrefabType = 0;
@@ -26,6 +26,12 @@ public class GunManager : MonoBehaviour
             if (assaultRifle != null)
             {
                 assaultRifle.SetActive(true);
+                Gun gunScript = assaultRifle.GetComponent<Gun>();
+                if (gunScript != null)
+                {
+                    gunScript.RecentAmmo = gunScript.ARcurrentAmmo;
+                    gunScript.RecentMaxAmmo = gunScript.ARAmmo;
+                }
             }
             if (sniperRifle != null)
             {
@@ -43,6 +49,12 @@ public class GunManager : MonoBehaviour
             if (sniperRifle != null)
             {
                 sniperRifle.SetActive(true);
+                Gun gunScript = sniperRifle.GetComponent<Gun>();
+                if (gunScript != null)
+                {
+                    gunScript.RecentAmmo = gunScript.SRcurrentAmmo;
+                    gunScript.RecentMaxAmmo = gunScript.SRAmmo;
+                }
             }
         }
     }
