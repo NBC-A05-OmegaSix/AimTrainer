@@ -2,15 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerIdleState : PlayerGroundedState
+public class PlayerFallState : PlayerAirState
 {
-    public PlayerIdleState(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
+    public PlayerFallState(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
     {
     }
 
     public override void Enter()
     {
-        stateMachine.MovementSpeedModifier = 0.5f;
         base.Enter();
     }
 
@@ -19,14 +18,13 @@ public class PlayerIdleState : PlayerGroundedState
         base.Exit();
     }
 
-
     public override void Update()
     {
         base.Update();
 
-        if (stateMachine.MovementInput != Vector2.zero)
+        if (stateMachine.Player.Controller.isGrounded)
         {
-            OnMove();
+            stateMachine.ChangeState(stateMachine.IdleState);
             return;
         }
     }
