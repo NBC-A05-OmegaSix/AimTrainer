@@ -47,8 +47,8 @@ public class ResultsUI : MonoBehaviour
 
     public void ActivateUI()
     {
+        AudioManager.Instance.PlayBGM(0, false);
         Time.timeScale = 0;
-
         ReportMenu.SetActive(true);
     }
 

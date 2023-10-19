@@ -7,6 +7,7 @@ public class EndSessionBtn : MonoBehaviour
     public void OnExitButtonClicked()
     {
         Time.timeScale = 0;
+        AudioManager.Instance.PlayBGM(0, false);
         resultsUI.SetActive(true);
     }
 }

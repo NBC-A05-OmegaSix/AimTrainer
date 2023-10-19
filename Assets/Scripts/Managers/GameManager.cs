@@ -8,6 +8,7 @@ public class GameManager : Singleton<GameManager>
 
     void Start()
     {
+        AudioManager.Instance.PlayBGM(0, true);
         Time.timeScale = 1;
         mainMenu.SetActive(false);
         resultUI.SetActive(false); // 추가된 부분
@@ -19,6 +20,7 @@ public class GameManager : Singleton<GameManager>
     {
         if (Input.GetKeyDown(KeyCode.F1))
         {
+            AudioManager.Instance.PlayBGM(0, false);
             ToggleMainMenu();
         }
 

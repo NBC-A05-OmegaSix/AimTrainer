@@ -7,7 +7,7 @@ public class AudioManager : Singleton<AudioManager>
     private const bool soundStop = false;
 
     [Header("#BGM")]
-    [SerializeField] private AudioClip bgmClips;
+    [SerializeField] private AudioClip[] bgmClips;
     public float bgmVolume;
     AudioSource bgmPlayer;
 
@@ -44,16 +44,31 @@ public class AudioManager : Singleton<AudioManager>
         }
     }
 
-    public void PlayBgm(bool isPlay)
+    public void PlayBGM(int index, bool isPlay)
     {
-        if (isPlay)
+        if (index >= 0 && index < bgmClips.Length)
         {
-            bgmPlayer.Play();
+            if (isPlay)
+            {
+                if (bgmPlayer.isPlaying)
+                {
+                    bgmPlayer.Stop();
+                }
+
+                bgmPlayer.clip = bgmClips[index];
+                bgmPlayer.Play();
+            }
+            else
+            {
+                bgmPlayer.Stop();
+            }
         }
-        else
-        {
-            bgmPlayer.Stop();
-        }
+    }
+
+    public void SwitchBGM(int stopIndex, int playIndex)
+    {
+        PlayBGM(stopIndex, soundStop);
+        PlayBGM(playIndex, soundPlay);
     }
 
     public void SetBGMVolume(float bgmVolume)
