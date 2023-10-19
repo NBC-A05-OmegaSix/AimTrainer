@@ -310,7 +310,7 @@ RectTransform:
   - {fileID: 3824476302002011822}
   - {fileID: 5788781302381926968}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -392,7 +392,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3473a0e7e9a5b544f920a43594473b96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gun: {fileID: 0}
+  gunManager: {fileID: 0}
   currentAmmoText: {fileID: 5946087989728344755}
   maxAmmoText: {fileID: 5206971193884425208}
   shootingStateText: {fileID: 1135675010736887229}

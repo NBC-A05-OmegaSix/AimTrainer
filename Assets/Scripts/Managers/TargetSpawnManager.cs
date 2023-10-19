@@ -34,8 +34,7 @@ public class TargetSpawnManager : Singleton<TargetSpawnManager>
         //FirstGenerateTarget();
 
         //InvokeRepeating(nameof(CreateTarget), 3.0f, 3.0f); // MainScene 시작 시 타겟 생성 메서드
-        ResetTargetGroup(); // -도현- 처음에는 리셋해두어 시작부터 타겟이 생성되지 않도록 함 
-        //SetTargetGroup(0);  
+        SetTargetGroup();
     }
 
     private void FirstGenerateTarget() // MainScene 시작 시 초기 타겟 표시 활성화 메서드. 모든 타겟 위치에 타겟 활성화
@@ -86,27 +85,24 @@ public class TargetSpawnManager : Singleton<TargetSpawnManager>
             targetPool.Add(_target);
         }
     }
-    
-    public void SetTargetGroup(int index) // 플레이어의 위치에 따라 타겟 그룹이 바뀌는 메서드
+
+    private void SetTargetGroup() // 플레이어의 위치에 따라 타겟 그룹이 바뀌는 메서드
     {
         ResetTargetGroup();
 
-        if (index >= 0 && index < targetSpawnPositions.Count)  // -도현- TargetSpawnTrigger 스크립트에서 index에 숫자를 집어넣어 해당 스폰포인트에 생성되도록 함 
+        _targetPos = targetSpawnPositions[0].GetComponentInChildren<Transform>(); // 여깁니다 여기
+
+        foreach (Transform position in _targetPos)
         {
-            _targetPos = targetSpawnPositions[index].GetComponentInChildren<Transform>();
-
-            foreach (Transform position in _targetPos)
-            {
-                targetPositionGroup.Add(position);
-                maxTargets++;
-            }
-
-            CreateTargetPool();
-
-            FirstGenerateTarget();
-
-            InvokeRepeating(nameof(CreateTarget), 3.0f, 3.0f);
+            targetPositionGroup.Add(position);
+            maxTargets++;
         }
+
+        CreateTargetPool();
+
+        FirstGenerateTarget();
+
+        InvokeRepeating(nameof(CreateTarget), 3.0f, 3.0f);
     }
 
     private void ResetTargetGroup() // 이전의 타겟 그룹을 취소하고 현재 타겟 그룹이 적용되도록 초기화하는 메서드
