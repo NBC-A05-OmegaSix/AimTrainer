@@ -167,11 +167,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d52c9d871886534daab18dddba70e46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetSpawnPositions: {fileID: 380628828}
+  targetSpawnPositions:
+  - {fileID: 380628828}
+  - {fileID: 1626944517}
+  - {fileID: 1626944516}
   targetPositionGroup: []
   targetPool: []
-  target: {fileID: 1336443488165784, guid: c7e9f74480d2343ef87c5c15624833d2, type: 3}
-  maxTargets: 18
+  target: {fileID: 8948387517787347442, guid: 93baa31ace09a58488514d9c2189ac49, type: 3}
 --- !u!43 &32145119
 Mesh:
   m_ObjectHideFlags: 0
@@ -4641,6 +4643,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 04040783b9d482a4f8270dbdf04c46ed, type: 3}
+--- !u!1 &1626944516 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3003108743921642310, guid: 04040783b9d482a4f8270dbdf04c46ed,
+    type: 3}
+  m_PrefabInstance: {fileID: 1626944515}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1626944517 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1257993526426104836, guid: 04040783b9d482a4f8270dbdf04c46ed,
+    type: 3}
+  m_PrefabInstance: {fileID: 1626944515}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &1695417049
 Mesh:
   m_ObjectHideFlags: 0

@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 public class TargetSpawnManager : Singleton<TargetSpawnManager>
 {
     [SerializeField]
-    private GameObject targetSpawnPositions;
+    private List<GameObject> targetSpawnPositions;
 
     public List<Transform> targetPositionGroup;
 
@@ -17,22 +17,24 @@ public class TargetSpawnManager : Singleton<TargetSpawnManager>
     private GameObject target;
 
     private int maxTargets;
+    private Transform _targetPos;
 
     void Start()
     {
-        Transform _targetPos = targetSpawnPositions.GetComponentInChildren<Transform>();
+        //Transform _targetPos = targetSpawnPositions.GetComponentInChildren<Transform>();
 
-        foreach (Transform position in _targetPos)
-        {
-            targetPositionGroup.Add(position);
-            maxTargets++;
-        }
+        //foreach (Transform position in _targetPos)
+        //{
+        //    targetPositionGroup.Add(position);
+        //    maxTargets++;
+        //}
 
-        CreateTargetPool();
+        //CreateTargetPool();
 
-        FirstGenerateTarget();
+        //FirstGenerateTarget();
 
-        InvokeRepeating(nameof(CreateTarget), 3.0f, 3.0f);
+        //InvokeRepeating(nameof(CreateTarget), 3.0f, 3.0f); // MainScene 시작 시 타겟 생성 메서드
+        SetTargetGroup();
     }
 
     private void FirstGenerateTarget() // MainScene 시작 시 초기 타겟 표시 활성화 메서드. 모든 타겟 위치에 타겟 활성화
@@ -84,4 +86,39 @@ public class TargetSpawnManager : Singleton<TargetSpawnManager>
         }
     }
     
+    private void SetTargetGroup() // 플레이어의 위치에 따라 타겟 그룹이 바뀌는 메서드
+    {
+        ResetTargetGroup();
+
+        _targetPos = targetSpawnPositions[2].GetComponentInChildren<Transform>(); // 여깁니다 여기
+
+        foreach (Transform position in _targetPos)
+        {
+            targetPositionGroup.Add(position);
+            maxTargets++;
+        }
+
+        CreateTargetPool();
+
+        FirstGenerateTarget();
+
+        InvokeRepeating(nameof(CreateTarget), 3.0f, 3.0f);
+    }
+
+    private void ResetTargetGroup() // 이전의 타겟 그룹을 취소하고 현재 타겟 그룹이 적용되도록 초기화하는 메서드
+    {
+        CancelInvoke();
+
+        if (targetPositionGroup.Count > 0)
+        {
+            targetPositionGroup.RemoveAll(x => x);
+        }
+
+        if (targetPool.Count > 0)
+        {
+            targetPool.RemoveAll(x => x); // ??
+        }
+
+        maxTargets = 0;
+    }
 }
