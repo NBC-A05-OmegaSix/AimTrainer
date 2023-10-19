@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 55
+  m_text: 00
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 16e5140571f3e9c47aa57f823e5073e1, type: 2}
   m_sharedMaterial: {fileID: 995993470873597075, guid: 16e5140571f3e9c47aa57f823e5073e1,
@@ -198,7 +198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.72156864, b: 0.72156864, a: 1}
+  m_Color: {r: 0.7176471, g: 0.79215693, b: 0.9803922, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -281,7 +281,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 55
+  m_text: 00
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 16e5140571f3e9c47aa57f823e5073e1, type: 2}
   m_sharedMaterial: {fileID: 995993470873597075, guid: 16e5140571f3e9c47aa57f823e5073e1,
@@ -370,7 +370,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3833074754242543990
 RectTransform:
   m_ObjectHideFlags: 0
@@ -385,7 +385,7 @@ RectTransform:
   m_Children:
   - {fileID: 1566996915597868400}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -469,11 +469,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   totalShotsFired: 0
   totalShotsHit: 0
-  timeRemaining: 180
   shotsFiredText: {fileID: 2069137044254430815}
   shotsHitText: {fileID: 3851229888162281815}
-  timeRemainingText: {fileID: 5949513249193755120}
-  mainMenuUI: {fileID: 0}
 --- !u!1 &9036435962298295383
 GameObject:
   m_ObjectHideFlags: 0
@@ -540,7 +537,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 180
+  m_text: 000
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 16e5140571f3e9c47aa57f823e5073e1, type: 2}
   m_sharedMaterial: {fileID: 995993470873597075, guid: 16e5140571f3e9c47aa57f823e5073e1,
