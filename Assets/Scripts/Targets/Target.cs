@@ -50,7 +50,6 @@ public class Target : MonoBehaviour
             MoveTarget();
         }
 
-       // Debug.Log(Vector3.Distance(initialPosition, transform.position).ToString());
     }
 
     private void MoveTarget()
@@ -67,7 +66,8 @@ public class Target : MonoBehaviour
         //일정 거리를 이동하면 방향을 바꿈
         if (Vector3.Distance(initialPosition, transform.position) > moveDistance)
         {
-            movingRight = true ? false : true;
+            if (movingRight) movingRight = false;
+            else movingRight = true;
         }
     }
 }
