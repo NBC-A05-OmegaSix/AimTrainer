@@ -289,16 +289,19 @@ public class Gun : MonoBehaviour
         // 다른 경우에 대한 모드 전환 코드는 그대로 유지
         if (currentFireMode == FireMode.Single)
         {
+            AudioManager.Instance.PlaySFX(SoundEffects.Sfx.FireSelector);
             Debug.Log("연사");
             currentFireMode = FireMode.FullAuto;
         }
         else if (currentFireMode == FireMode.FullAuto)
         {
+            AudioManager.Instance.PlaySFX(SoundEffects.Sfx.FireSelector);
             Debug.Log("3연사");
             currentFireMode = FireMode.Burst3;
         }
         else if (currentFireMode == FireMode.Burst3)
         {
+            AudioManager.Instance.PlaySFX(SoundEffects.Sfx.FireSelector);
             Debug.Log("단발");
             currentFireMode = FireMode.Single;
         }
