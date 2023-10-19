@@ -6,14 +6,17 @@ TagManager:
   tags:
   - Target
   - Bullet
+  - Session1
+  - Session2
+  - Session3
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
-  - 
+  - Player
   - 
   - 
   - 

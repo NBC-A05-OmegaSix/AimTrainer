@@ -2,15 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerRunState : PlayerGroundedState
+public class PlayerAirState : PlayerBaseState
 {
-    public PlayerRunState(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
+    public PlayerAirState(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
     {
     }
 
     public override void Enter()
     {
-        stateMachine.MovementSpeedModifier = groundData.RunSpeedModifier;
         base.Enter();
     }
 

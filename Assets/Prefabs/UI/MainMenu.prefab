@@ -62,7 +62,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.990566, g: 0.81768423, b: 0.81768423, a: 1}
+  m_Color: {r: 0.7176471, g: 0.79215693, b: 0.9803922, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -91,6 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4bdd0ed4d98a434fbbc3d0878390eab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  resultsUI: {fileID: 0}
 --- !u!114 &4829842570176917332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,7 +210,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.990566, g: 0.81768423, b: 0.81768423, a: 1}
+  m_Color: {r: 0.7176471, g: 0.79215693, b: 0.9803922, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -313,7 +314,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7286522639062285058
 RectTransform:
   m_ObjectHideFlags: 0
@@ -328,7 +329,7 @@ RectTransform:
   m_Children:
   - {fileID: 3944241397563366572}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -464,7 +465,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: START
+  m_text: RESUME
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 16e5140571f3e9c47aa57f823e5073e1, type: 2}
   m_sharedMaterial: {fileID: 995993470873597075, guid: 16e5140571f3e9c47aa57f823e5073e1,
@@ -868,7 +869,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.990566, g: 0.81768423, b: 0.81768423, a: 1}
+  m_Color: {r: 0.71733713, g: 0.7908954, b: 0.9811321, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -955,6 +956,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainMenu: {fileID: 3034344999390220249}
   statsUI: {fileID: 0}
+  ammosUI: {fileID: 0}
 --- !u!1 &8175599484184005752
 GameObject:
   m_ObjectHideFlags: 0
@@ -1018,7 +1020,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.5529412, b: 0.5529412, a: 1}
+  m_Color: {r: 0.41037738, g: 0.57758373, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1101,7 +1103,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: EXIT
+  m_text: END SESSION
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 16e5140571f3e9c47aa57f823e5073e1, type: 2}
   m_sharedMaterial: {fileID: 995993470873597075, guid: 16e5140571f3e9c47aa57f823e5073e1,
