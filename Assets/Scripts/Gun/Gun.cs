@@ -201,6 +201,7 @@ public class Gun : MonoBehaviour
                     Camera mainCamera = Camera.main;
                     if (mainCamera != null)
                     {
+                        gunAnimator.Play("AR Animation");
                         // 메인 카메라의 정면 방향을 구합니다.
                         Vector3 cameraForward = mainCamera.transform.forward;
                         // 총알 생성
@@ -321,6 +322,7 @@ public class Gun : MonoBehaviour
                 {
                     AudioManager.Instance.PlaySFX(SoundEffects.Sfx.FireAR);
                 }
+                gunAnimator.Play("AR Animation");
                 Rigidbody bulletRigidbody = bullet.GetComponent<Rigidbody>();
                 bulletRigidbody.velocity = gunBarrel.forward * bulletSpeed;
                 // 총알 방향 설정
