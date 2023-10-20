@@ -1,19 +1,21 @@
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 public class MouseSettingMenu : MonoBehaviour
 {
-    public Slider mouseSensitivitySlider;
+    public TMP_InputField mouseSensitivityInputField;
     public PlayerCamera playerCamera;
 
     private void Start()
     {
-        mouseSensitivitySlider.onValueChanged.AddListener(delegate { OnSensitivityChanged(); });
+        mouseSensitivityInputField.onEndEdit.AddListener(delegate { OnSensitivityChanged(); });
     }
 
     public void OnSensitivityChanged()
     {
-        float sensitivityValue = mouseSensitivitySlider.value;
-        playerCamera.SetMouseSensitivity(sensitivityValue);
+        if (float.TryParse(mouseSensitivityInputField.text, out float sensitivityValue))
+        {
+            playerCamera.SetMouseSensitivity(sensitivityValue);
+        }
     }
 }
