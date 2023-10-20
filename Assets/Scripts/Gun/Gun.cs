@@ -133,6 +133,7 @@ public class Gun : MonoBehaviour
         if (RecentAmmo > 0)
         {
             bulletCount++; // 발사한 총알 수 증가
+            Debug.Log("발사한 총알 수: " + bulletCount);
             if (OnAmmoCountUpdate != null)
             {
                 OnAmmoCountUpdate(bulletCount); // UI 
@@ -144,13 +145,13 @@ public class Gun : MonoBehaviour
                     if (isSniperRifle)
                     {
                         SRcurrentAmmo--;
-                        RecentAmmo--;
+                        //RecentAmmo--;   // 여기서 SRAmmo도 -1하고
                         countCoroutine = StartCoroutine(SniperRifleCooldown());
                     }
                     else
                     {
                         ARcurrentAmmo--;
-                        RecentAmmo--;
+                        //RecentAmmo--;  // ARammo도 -1 했는데 Recentammo도 -- 해서 -2가 되는 듯 합니다
                     }
                     Camera mainCamera = Camera.main;
                     if (mainCamera != null)
@@ -205,8 +206,10 @@ public class Gun : MonoBehaviour
         {
             Reload();
         }
+        Debug.Log("남은 총알 수: " + RecentAmmo);
+
     }
-    
+
     IEnumerator ShootSequence()
     {
         while (isShooting)

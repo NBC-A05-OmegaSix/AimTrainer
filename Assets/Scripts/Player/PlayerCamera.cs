@@ -12,6 +12,7 @@ public class PlayerCamera : MonoBehaviour
 
     [SerializeField]
     private GameObject cameraPosition;
+    private float mouseSensitivityMultiplier = 1f;
     void Start()
     {
     }
@@ -27,4 +28,10 @@ public class PlayerCamera : MonoBehaviour
         transform.eulerAngles = new Vector3(0, rotationY, 0);
         cameraPosition.transform.localEulerAngles = new Vector3(-rotationX, 0, 0);
     }
+
+    public void SetMouseSensitivity(float sensitivityMultiplier)
+    {
+        mouseSensitivityMultiplier = sensitivityMultiplier;
+    }
+
 }
