@@ -145,13 +145,11 @@ public class Gun : MonoBehaviour
                     if (isSniperRifle)
                     {
                         SRcurrentAmmo--;
-                        //RecentAmmo--;   // 여기서 SRAmmo도 -1하고
                         countCoroutine = StartCoroutine(SniperRifleCooldown());
                     }
                     else
                     {
                         ARcurrentAmmo--;
-                        //RecentAmmo--;  // ARammo도 -1 했는데 Recentammo도 -- 해서 -2가 되는 듯 합니다
                     }
                     Camera mainCamera = Camera.main;
                     if (mainCamera != null)
@@ -279,7 +277,6 @@ public class Gun : MonoBehaviour
             canShoot = false;
             for (int i = 0; i < shotNumber; i++)
             {
-                ARcurrentAmmo --; 
                 RecentAmmo --; 
                 GameObject bullet = Instantiate(bulletPrefab, gunBarrel.position, gunBarrel.rotation);
                 if (isReloading == false)
