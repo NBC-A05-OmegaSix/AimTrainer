@@ -31,6 +31,7 @@ public class DialogueManager : Singleton<DialogueManager>
         {
             nameText.text = dialogueList.dialogues[currentDialogueIndex].name;
             DialoguesText.text = dialogueList.dialogues[currentDialogueIndex].dialogue;
+            AudioManager.Instance.PlayerDialogue(currentDialogueIndex);
         }
     }
 

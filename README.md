@@ -6,9 +6,8 @@ https://teamsparta.notion.site/e743be2c68e14585bbc0498514d0f04f
 
 
 ## 🖥️ Project Introduction
-스파르타코딩클럽 내일배움캠프 - 3D 게임 심화 프로젝트
-<br> AimTrainer
-
+스파르타코딩클럽 내일배움캠프 - 3D 게임 심화 프로젝트<br> 
+Unity를 활용한 FPS Aim Training Game
 <br>
 
 ## 🕰️ Development Period
@@ -34,6 +33,10 @@ https://teamsparta.notion.site/e743be2c68e14585bbc0498514d0f04f
 - Scalable Grid Prototype : https://assetstore.unity.com/packages/2d/textures-materials/minimalist-scalable-grid-prototype-materials-214264
 
 ## 📌 Main Functions
-###  - <a href="" >상세보기 - WIKI 이동</a>
-
+###  GameManager - <a href="" >[상세보기 - WIKI 이동](https://github.com/NBC-A05-OmegaSix/AimTrainer/wiki/1-%E2%80%90-GameManager)</a>
+###  AudioManager - <a href="" >[상세보기 - WIKI 이동](https://github.com/NBC-A05-OmegaSix/AimTrainer/wiki/2%E2%80%90-AudioManager)</a>
+###  DialogueManager - <a href="" >[상세보기 - WIKI 이동](https://github.com/NBC-A05-OmegaSix/AimTrainer/wiki/3%E2%80%90-DialogueManager)</a>
+###  GunManager - <a href="" >[상세보기 - WIKI 이동](https://github.com/NBC-A05-OmegaSix/AimTrainer/wiki/4%E2%80%90-GunManager)</a>
+###  IntroManager - <a href="" >[상세보기 - WIKI 이동](https://github.com/NBC-A05-OmegaSix/AimTrainer/wiki/5-%E2%80%90-IntroManager)</a>
+###  TargetSpawnManager - <a href="" >[상세보기 - WIKI 이동](https://github.com/NBC-A05-OmegaSix/AimTrainer/wiki/6-%E2%80%90-TargetManager)</a>
 
