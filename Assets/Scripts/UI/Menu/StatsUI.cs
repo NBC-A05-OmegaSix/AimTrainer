@@ -7,7 +7,7 @@ public class Stats : MonoBehaviour
     public int totalShotsHit = 0;
     public TextMeshProUGUI shotsFiredText;
     public TextMeshProUGUI shotsHitText;
-    public TextMeshProUGUI timeText; // 시간을 표시할 UI 텍스트
+    public TextMeshProUGUI timeText;
 
     private bool timerStarted = false;
     private float elapsedTime = 0f;
@@ -15,7 +15,7 @@ public class Stats : MonoBehaviour
     void Start()
     {
         Gun.OnAmmoCountUpdate += UpdateAmmoCountUI;
-        StartTimer(); // 타이머 시작
+        StartTimer();
     }
 
     void OnDestroy()
@@ -27,25 +27,25 @@ public class Stats : MonoBehaviour
     {
         if (timerStarted)
         {
-            elapsedTime += Time.deltaTime; // 경과된 시간 증가
-            UpdateTimeUI(); // UI에 시간 업데이트
+            elapsedTime += Time.deltaTime;
+            UpdateTimeUI();
         }
     }
 
     void UpdateAmmoCountUI(int count)
     {
-        shotsFiredText.text = count.ToString(); // UI
-        shotsHitText.text = totalShotsHit.ToString(); // Hit Count
+        shotsFiredText.text = count.ToString();
+        shotsHitText.text = totalShotsHit.ToString();
     }
 
     void UpdateTimeUI()
     {
-        timeText.text = elapsedTime.ToString("F1"); // 시간을 UI에 업데이트
+        timeText.text = elapsedTime.ToString("F1");
     }
 
     void StartTimer()
     {
-        timerStarted = true; // 타이머 시작
+        timerStarted = true;
     }
     public float GetElapsedTime()
     {

@@ -1,33 +1,21 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Target : MonoBehaviour
 {
-   
-    private AudioSource audiosource;
-
-    public int maxHealth = 1; //타겟 체력
+    public int maxHealth = 1;
     private int currentHealth;
-    public float respawnTime = 2.0f; //타겟 재생성 시간
-    private Coroutine respawnCoroutine;
+    public float respawnTime = 2.0f;
     [SerializeField]
     private bool isMovable;
 
     [Header("Moving Target")]
-    public float moveSpeed = 4.0f; //움직임 속도
-    public float moveDistance = 10.0f; //좌우로 움직일 거리
+    public float moveSpeed = 4.0f;
+    public float moveDistance = 10.0f;
     private Vector3 initialPosition;
     private bool movingRight = true;
 
-    private bool isCounted = false; // UI target Count
+    private bool isCounted = false;
     public int totalShotsHit = 0;
-
-    private void Awake()
-    {
-        audiosource = GetComponent<AudioSource>();
-    }
 
     private void Start()
     {
@@ -39,13 +27,12 @@ public class Target : MonoBehaviour
     {
         currentHealth -= damage;
 
-        if (currentHealth <= 0 && !isCounted) // 타겟이 비활성화되고 아직 카운트되지 않았을 때
+        if (currentHealth <= 0 && !isCounted)
         {
             FindObjectOfType<Stats>().totalShotsHit++;
-            totalShotsHit++; // 타겟이 비활성화된 횟수 증가
-            isCounted = true; // 카운트되었음을 표시
+            totalShotsHit++;
+            isCounted = true;
             AudioManager.Instance.PlaySFX(SoundEffects.Sfx.Hit);
-            //타겟 비활성화
             gameObject.SetActive(false);
         }
     }
@@ -61,7 +48,6 @@ public class Target : MonoBehaviour
 
     private void MoveTarget()
     {
-        //좌우로 움직이는 로직
         if (movingRight)
         {
             transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
@@ -70,7 +56,6 @@ public class Target : MonoBehaviour
         {
             transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
         }
-        //일정 거리를 이동하면 방향을 바꿈
         if (Vector3.Distance(initialPosition, transform.position) > moveDistance)
         {
             if (movingRight) movingRight = false;

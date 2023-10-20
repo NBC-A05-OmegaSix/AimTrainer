@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class OptionsMenu : MonoBehaviour
 {
@@ -8,13 +7,6 @@ public class OptionsMenu : MonoBehaviour
     public GameObject audioMenu;
     public GameObject crossHairMenu;
     public GameObject backBtn;
-
-
-    void Start()
-    {
-
-    }
-
     public void OnBackToMenuButtonClicked()
     {
         optionsMenu.SetActive(false);
