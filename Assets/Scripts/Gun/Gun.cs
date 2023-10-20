@@ -172,7 +172,7 @@ public class Gun : MonoBehaviour
                 }
                 else if (currentFireMode == FireMode.Burst3)
                 {
-                    int shotNumber = Mathf.Min(ARcurrentAmmo, 3);
+                    int shotNumber = Mathf.Min(RecentAmmo, 3);
                     bulletCount += 2;
                     StartCoroutine(ShootBurst(shotNumber));
                 }
