@@ -23,10 +23,10 @@ public class Gun : MonoBehaviour
 
     public GameObject bulletPrefab; // 총알 프리팹
     private float bulletSpeed = 10f; // 총알 속도
-    private float bulletLifetime = 2f; // 총알 생존 시간
+    private float bulletLifetime = 2.5f; // 총알 생존 시간
 
     private bool isReloading = false; // 리로드 중인지 여부
-    private float reloadTime = 7f; // 리로드 시간 (3초)
+    private float reloadTime = 3f; // 리로드 시간 (3초)
 
     private float burstInterval = 0.2f;
     public FireMode currentFireMode = FireMode.Single;

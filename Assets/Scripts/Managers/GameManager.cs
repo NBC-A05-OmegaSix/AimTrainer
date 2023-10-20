@@ -54,6 +54,7 @@ public class GameManager : Singleton<GameManager>
     // 추가된 부분 
     void ShowResultUI()
     {
+        AudioManager.Instance.PlayBGM(0, false);
         resultUI.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;

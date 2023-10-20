@@ -82,34 +82,33 @@ public class AudioManager : Singleton<AudioManager>
     {
         for (int index = 0; index < sfxPlayers.Length; index++)
         {
-            int loopIndex = (index * channelIndex) % sfxPlayers.Length;
-
-            if (sfxPlayers[loopIndex].isPlaying)
+            int loopIndex = index % sfxPlayers.Length;
+            if (!sfxPlayers[loopIndex].isPlaying)
             {
-                continue;
+                if (sfx == Sfx.RunLeftFoot)
+                {
+                    sfx = (sfxPlayers[loopIndex].clip == sfxClips[(int)Sfx.RunLeftFoot])
+                        ? Sfx.RunRightFoot : Sfx.RunLeftFoot;
+                }
+
+                if (sfx == Sfx.WalkLeftFoot)
+                {
+                    sfx = (sfxPlayers[loopIndex].clip == sfxClips[(int)Sfx.WalkLeftFoot])
+                        ? Sfx.WalkRightFoot : Sfx.WalkLeftFoot;
+                }
+
+                channelIndex++;
+                if (channelIndex >= sfxPlayers.Length)
+                {
+                    channelIndex = 0;
+                }
+
+                sfxPlayers[loopIndex].PlayOneShot(sfxClips[(int)sfx]);
+
+                break;
             }
-
-            if (sfx == Sfx.RunLeftFoot)
-            {
-                sfx = (sfxPlayers[loopIndex].clip == sfxClips[(int)Sfx.RunLeftFoot])
-                    ? Sfx.RunRightFoot : Sfx.RunLeftFoot;
-            }
-
-            if (sfx == Sfx.WalkLeftFoot)
-            {
-                sfx = (sfxPlayers[loopIndex].clip == sfxClips[(int)Sfx.WalkLeftFoot])
-                    ? Sfx.WalkRightFoot : Sfx.WalkLeftFoot;
-            }
-
-            channelIndex = loopIndex;
-            sfxPlayers[loopIndex].clip = sfxClips[(int)sfx];
-
-            sfxPlayers[loopIndex].Play();
-
-            break;
         }
     }
-
 
     public void SetSFXVolume(float sfxVolume)
     {
