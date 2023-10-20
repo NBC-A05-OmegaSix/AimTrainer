@@ -11,7 +11,7 @@ public class MouseSettingMenu : MonoBehaviour
         mouseSensitivitySlider.onValueChanged.AddListener(delegate { OnSensitivityChanged(); });
     }
 
-    private void OnSensitivityChanged()
+    public void OnSensitivityChanged()
     {
         float sensitivityValue = mouseSensitivitySlider.value;
         playerCamera.SetMouseSensitivity(sensitivityValue);
