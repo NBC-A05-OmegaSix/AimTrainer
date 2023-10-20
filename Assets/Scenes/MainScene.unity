@@ -2093,6 +2093,41 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -80
       objectReference: {fileID: 0}
+    - target: {fileID: 5926085205814266905, guid: 5956377b071bbe948be072664f36dc20,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5926085205814266905, guid: 5956377b071bbe948be072664f36dc20,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5926085205814266905, guid: 5956377b071bbe948be072664f36dc20,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1368157712}
+    - target: {fileID: 5926085205814266905, guid: 5956377b071bbe948be072664f36dc20,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5926085205814266905, guid: 5956377b071bbe948be072664f36dc20,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AdjustCrosshairScale
+      objectReference: {fileID: 0}
+    - target: {fileID: 5926085205814266905, guid: 5956377b071bbe948be072664f36dc20,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: CrosshairSettingMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5926085205814266905, guid: 5956377b071bbe948be072664f36dc20,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 6093796847134501172, guid: 5956377b071bbe948be072664f36dc20,
         type: 3}
       propertyPath: m_fontSize
@@ -3229,7 +3264,6 @@ GameObject:
   m_Component:
   - component: {fileID: 588930305}
   - component: {fileID: 588930303}
-  - component: {fileID: 588930304}
   m_Layer: 5
   m_Name: MouseSlider
   m_TagString: Untagged
@@ -3288,10 +3322,10 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 588930304}
-        m_TargetAssemblyTypeName: AudioSlider, Assembly-CSharp
-        m_MethodName: ChangeBGMVolume
-        m_Mode: 0
+      - m_Target: {fileID: 1700566915}
+        m_TargetAssemblyTypeName: MouseSettingMenu, Assembly-CSharp
+        m_MethodName: OnSensitivityChanged
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3300,19 +3334,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &588930304
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 588930302}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de14750ddeedd02488ef976d6d30506a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BGMSlider: {fileID: 588930303}
 --- !u!224 &588930305
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4794,7 +4815,7 @@ GameObject:
   - component: {fileID: 1041825600}
   - component: {fileID: 1041825599}
   m_Layer: 5
-  m_Name: CrossHair
+  m_Name: CrossHair2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5566,6 +5587,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   crosshairImage: {fileID: 435014549}
+  crosshairImage2: {fileID: 1041825599}
   scaleSlider: {fileID: 316158453}
 --- !u!1001 &1433926964
 PrefabInstance:
