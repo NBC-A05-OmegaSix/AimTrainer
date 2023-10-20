@@ -29,7 +29,9 @@ https://teamsparta.notion.site/e743be2c68e14585bbc0498514d0f04f
 - **Framework** : .NET 6.0
 
 ### 📜 Assets References
-- 
+- Eblackburn_Assets : https://assetstore.unity.com/packages/3d/animations/2d-targets-sprites-142142#content
+- LowPolyGuns : https://assetstore.unity.com/packages/3d/props/weapons/3d-guns-guns-pack-228975
+- Scalable Grid Prototype : https://assetstore.unity.com/packages/2d/textures-materials/minimalist-scalable-grid-prototype-materials-214264
 
 ## 📌 Main Functions
 ###  - <a href="" >상세보기 - WIKI 이동</a>
