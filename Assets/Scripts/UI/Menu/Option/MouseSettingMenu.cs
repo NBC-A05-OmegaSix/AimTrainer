@@ -1,18 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MouseSettingMenu : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public Slider mouseSensitivitySlider;
+    public PlayerCamera playerCamera;
+
+    private void Start()
     {
-        
+        mouseSensitivitySlider.onValueChanged.AddListener(delegate { OnSensitivityChanged(); });
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnSensitivityChanged()
     {
-        
+        float sensitivityValue = mouseSensitivitySlider.value;
+        playerCamera.SetMouseSensitivity(sensitivityValue);
     }
 }

@@ -36,7 +36,7 @@ public class AudioManager : Singleton<AudioManager>
         sfxObject.transform.parent = transform;
         sfxPlayers = new AudioSource[channels];
 
-        for(int index = 0; index < sfxPlayers.Length; index++)
+        for (int index = 0; index < sfxPlayers.Length; index++)
         {
             sfxPlayers[index] = sfxObject.AddComponent<AudioSource>();
             sfxPlayers[index].playOnAwake = false;
@@ -115,7 +115,7 @@ public class AudioManager : Singleton<AudioManager>
     {
         this.sfxVolume = sfxVolume;
 
-        foreach(var sfxPlayer in sfxPlayers)
+        foreach (var sfxPlayer in sfxPlayers)
         {
             sfxPlayer.volume = sfxVolume;
         }
@@ -123,7 +123,7 @@ public class AudioManager : Singleton<AudioManager>
 
     public void PlayerDialogue(int index)
     {
-        if(index >= 0 && index < dialogueClips.Length)
+        if (index >= 0 && index < dialogueClips.Length)
         {
             AudioSource dialoguePlayer = sfxPlayers[0];
             if (dialoguePlayer.isPlaying)
