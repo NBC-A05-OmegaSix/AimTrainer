@@ -2,7 +2,6 @@ using UnityEngine;
 using TMPro;
 using System.IO;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class DialogueManager : Singleton<DialogueManager>
 {
@@ -32,12 +31,6 @@ public class DialogueManager : Singleton<DialogueManager>
         {
             nameText.text = dialogueList.dialogues[currentDialogueIndex].name;
             DialoguesText.text = dialogueList.dialogues[currentDialogueIndex].dialogue;
-
-            //AudioManager.Instance.PlayerDialogue(currentDialogueIndex);
-        }
-        else
-        {
-            Debug.Log("End of dialogues.");
         }
     }
 
@@ -47,7 +40,6 @@ public class DialogueManager : Singleton<DialogueManager>
 
         if (currentDialogueIndex >= dialogueList.dialogues.Count)
             SceneManager.LoadScene("MainScene");
-
         DisplayDialogue();
     }
 }

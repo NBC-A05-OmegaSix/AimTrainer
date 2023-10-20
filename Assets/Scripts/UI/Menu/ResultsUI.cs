@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 
@@ -14,21 +13,19 @@ public class ResultsUI : MonoBehaviour
     public GameObject ReportMenu;
     public GameObject MainMenu;
 
-    private Gun gunScript; // Gun 스크립트 참조
-    private Stats statsScript; // Stats 스크립트 참조
+    private Gun gunScript; 
+    private Stats statsScript;
 
     void Start()
     {
-        gunScript = FindObjectOfType<Gun>(); // Gun 스크립트 찾기
-        statsScript = FindObjectOfType<Stats>(); // Stats 스크립트 찾기
+        gunScript = FindObjectOfType<Gun>();
+        statsScript = FindObjectOfType<Stats>();
     }
 
     void Update()
     {
-        // totalShotsText에 발사한 총알의 수를 표시
         totalShotsText.text = gunScript.bulletCount.ToString();
 
-        // Stats 스크립트에서 totalShotsHit 값을 가져와 표시
             totalHitsText.text = statsScript.totalShotsHit.ToString();
 
         totalMissesText.text = (gunScript.bulletCount - statsScript.totalShotsHit).ToString();
@@ -40,10 +37,9 @@ public class ResultsUI : MonoBehaviour
 
     }
 
-    public void DisplayResults(int totalShots, int totalHits)
-    {
-        // 표시할 내용
-    }
+    //public void DisplayResults(int totalShots, int totalHits)
+    //{
+    //}
 
     public void ActivateUI()
     {

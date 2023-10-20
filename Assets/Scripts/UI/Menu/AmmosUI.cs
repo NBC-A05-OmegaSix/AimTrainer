@@ -8,11 +8,6 @@ public class AmmoUI : MonoBehaviour
     public TextMeshProUGUI maxAmmoText;
     public TextMeshProUGUI shootingStateText;
 
-    void Start()
-    {
-        
-    }
-
     void Update()
     {
         Gun currentGun = GetCurrentGun();
