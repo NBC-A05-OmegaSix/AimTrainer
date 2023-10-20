@@ -28,9 +28,9 @@ Unity를 활용한 FPS Aim Training Game
 - **Framework** : .NET 6.0
 
 ### 📜 Assets References
-- https://assetstore.unity.com/packages/3d/animations/2d-targets-sprites-142142#content
-- https://assetstore.unity.com/packages/2d/textures-materials/minimalist-scalable-grid-prototype-materials-214264
-- https://assetstore.unity.com/packages/3d/props/weapons/3d-guns-guns-pack-228975
+- Eblackburn_Assets : https://assetstore.unity.com/packages/3d/animations/2d-targets-sprites-142142#content
+- LowPolyGuns : https://assetstore.unity.com/packages/3d/props/weapons/3d-guns-guns-pack-228975
+- Scalable Grid Prototype : https://assetstore.unity.com/packages/2d/textures-materials/minimalist-scalable-grid-prototype-materials-214264
 
 ## 📌 Main Functions
 ###  GameManager - <a href="" >[상세보기 - WIKI 이동](https://github.com/NBC-A05-OmegaSix/AimTrainer/wiki/1-%E2%80%90-GameManager)</a>
