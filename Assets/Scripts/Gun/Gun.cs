@@ -10,41 +10,37 @@ public enum FireMode
 
 public class Gun : MonoBehaviour
 {
-    // 현재 장탄수
-    public int ARAmmo = 30; // 최대 장탄수
-    public int SRAmmo = 10; // 최대 장탄수
-    public int ARcurrentAmmo; //현재 장탄수
-    public int SRcurrentAmmo; //현재 장탄수
+    public int ARAmmo = 30;
+    public int SRAmmo = 10;
+    public int ARcurrentAmmo;
+    public int SRcurrentAmmo;
     public int RecentAmmo;
     public int RecentMaxAmmo;
-    private float damage = 10f; // 총의 데미지
-    private float range = 100f; // 사정 거리
-    public Transform gunBarrel; // 총구의 위치
+    public Transform gunBarrel;
 
-    public GameObject bulletPrefab; // 총알 프리팹
-    private float bulletSpeed = 10f; // 총알 속도
-    private float bulletLifetime = 2.5f; // 총알 생존 시간
+    public GameObject bulletPrefab;
+    private float bulletSpeed = 40f;
+    private float bulletLifetime = 5f;
 
-    private bool isReloading = false; // 리로드 중인지 여부
-    private float reloadTime = 3f; // 리로드 시간 (3초)
+    private bool isReloading = false;
+    private float reloadTime = 3f;
 
     private float burstInterval = 0.2f;
     public FireMode currentFireMode = FireMode.Single;
     private bool canShoot = true;
     private bool isShooting = false;
 
-    public bool isSniperRifle;  // 스나이퍼 라이플 여부
-    private float sniperRifleCooldown = 2.5f; // 스나이퍼 라이플 재장전 시간
+    public bool isSniperRifle;
+    private float sniperRifleCooldown = 2.5f;
     private bool isSniperCooldownActive = false;
 
-    private Animator gunAnimator; // 애니메이션 컴포넌트 참조
-    private Coroutine countCoroutine = null; //코루틴 관련
+    private Animator gunAnimator;
+    private Coroutine countCoroutine = null;
 
-    public delegate void UpdateAmmoCount(int count); // UI 
-    public static event UpdateAmmoCount OnAmmoCountUpdate; // UI 
+    public delegate void UpdateAmmoCount(int count);
+    public static event UpdateAmmoCount OnAmmoCountUpdate;
 
-    public int bulletCount; // 발사한 총알의 수를 저장할 변수
-
+    public int bulletCount;
     void Start()
     {
         ARcurrentAmmo = ARAmmo;
@@ -53,7 +49,7 @@ public class Gun : MonoBehaviour
         RecentMaxAmmo = ARAmmo;
         isReloading = false;
         gunAnimator = GetComponent<Animator>();
-        bulletCount = 0; // UI
+        bulletCount = 0;
     }
 
     void Update()
@@ -83,21 +79,18 @@ public class Gun : MonoBehaviour
         }
         else
         {
-            // 마우스 버튼을 누르는 순간 재장전 중이라면 Shoot() 함수를 호출하지 않음
             if (!isReloading && Input.GetMouseButtonDown(0) && canShoot)
             {
                 if (RecentAmmo > 0)
                 { 
                     isShooting = true;
                     Shoot();
-                    // 스나이퍼 라이플의 경우 추가적인 쿨다운 처리
                     if (isSniperRifle && !isSniperCooldownActive)
                     {
                         canShoot = false;
                         isSniperCooldownActive = true;
                         StartCoroutine(SniperRifleCooldown());
                     }
-
                 }
                 else
                 {
@@ -108,12 +101,10 @@ public class Gun : MonoBehaviour
             {
                 isShooting = false;
             }
-
         }
 
         if (Input.GetKeyDown(KeyCode.R))
         {
-            Debug.Log("리로딩 중");
             Reload();
         }
         
@@ -132,11 +123,10 @@ public class Gun : MonoBehaviour
         }
         if (RecentAmmo > 0)
         {
-            bulletCount++; // 발사한 총알 수 증가
-            Debug.Log("발사한 총알 수: " + bulletCount);
+            bulletCount++;
             if (OnAmmoCountUpdate != null)
             {
-                OnAmmoCountUpdate(bulletCount); // UI 
+                OnAmmoCountUpdate(bulletCount);
             }
             if (isShooting)
             {
@@ -154,20 +144,18 @@ public class Gun : MonoBehaviour
                     Camera mainCamera = Camera.main;
                     if (mainCamera != null)
                     {
-                        Debug.Log("7");
                         if (isSniperRifle)
                         {
-                            gunAnimator.Play("SR Animation"); // 스니퍼 라이플 애니메이션 
+                            gunAnimator.Play("SR Animation");
                             AudioManager.Instance.PlaySFX(SoundEffects.Sfx.FireSR);
                         }
                         else
                         {
-                            gunAnimator.Play("AR Animation"); // 기본 발사 애니메이션 클립
+                            gunAnimator.Play("AR Animation");
                             AudioManager.Instance.PlaySFX(SoundEffects.Sfx.FireAR);
                         }
 
                         StartCoroutine(ShootBurst(1));
-                        Debug.Log("8");
                     }
                 }
                 else if (currentFireMode == FireMode.Burst3)
@@ -180,21 +168,16 @@ public class Gun : MonoBehaviour
                 {
                     ARcurrentAmmo--;
                     RecentAmmo--;
-                    // 풀오토 모드에서는 무제한 발사 가능
                     Camera mainCamera = Camera.main;
                     if (mainCamera != null)
                     {
                         gunAnimator.Play("AR Animation");
-                        // 메인 카메라의 정면 방향을 구합니다.
                         Vector3 cameraForward = mainCamera.transform.forward;
-                        // 총알 생성
                         GameObject bullet = Instantiate(bulletPrefab, gunBarrel.position, gunBarrel.rotation);
                         AudioManager.Instance.PlaySFX(SoundEffects.Sfx.FireAR);
                         Rigidbody bulletRigidbody = bullet.GetComponent<Rigidbody>();
                         bulletRigidbody.velocity = gunBarrel.forward * bulletSpeed;
-                        // 총알 방향 설정
                         bulletRigidbody.velocity = cameraForward * bulletSpeed;
-                        // 총알 발사 후 처리
                         Destroy(bullet, bulletLifetime);
                     }
                 }
@@ -204,8 +187,6 @@ public class Gun : MonoBehaviour
         {
             Reload();
         }
-        Debug.Log("남은 총알 수: " + RecentAmmo);
-
     }
 
     IEnumerator ShootSequence()
@@ -243,7 +224,6 @@ public class Gun : MonoBehaviour
         {
             AudioManager.Instance.PlaySFX(SoundEffects.Sfx.ReloadAR);
         }
-
         StartCoroutine(ReloadCoroutine());
     }
 
@@ -262,7 +242,6 @@ public class Gun : MonoBehaviour
             RecentAmmo = ARcurrentAmmo;
             RecentMaxAmmo = ARAmmo;
         }
-
         isReloading = false;
     }
 
@@ -272,7 +251,6 @@ public class Gun : MonoBehaviour
         Camera mainCamera = Camera.main;
         if (mainCamera != null)
         {
-            // 메인 카메라의 정면 방향을 구합니다.
             Vector3 cameraForward = mainCamera.transform.forward;
             canShoot = false;
             for (int i = 0; i < shotNumber; i++)
@@ -286,17 +264,14 @@ public class Gun : MonoBehaviour
                 gunAnimator.Play("AR Animation");
                 Rigidbody bulletRigidbody = bullet.GetComponent<Rigidbody>();
                 bulletRigidbody.velocity = gunBarrel.forward * bulletSpeed;
-                // 총알 방향 설정
                 bulletRigidbody.velocity = cameraForward * bulletSpeed;
                 Destroy(bullet, bulletLifetime);
-                //gunAnimator.Play("AR Animation Three");
                 burstInterval = 0.2f;
                 if (i < shotNumber - 1)
                 {
                     yield return new WaitForSeconds(burstInterval);
                 }
             }
-
             canShoot = true;
         }
     }
