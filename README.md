@@ -6,9 +6,8 @@ https://teamsparta.notion.site/e743be2c68e14585bbc0498514d0f04f
 
 
 ## 🖥️ Project Introduction
-스파르타코딩클럽 내일배움캠프 - 3D 게임 심화 프로젝트
-<br> AimTrainer
-
+스파르타코딩클럽 내일배움캠프 - 3D 게임 심화 프로젝트<br> 
+Unity를 활용한 FPS Aim Training Game
 <br>
 
 ## 🕰️ Development Period
@@ -30,8 +29,14 @@ https://teamsparta.notion.site/e743be2c68e14585bbc0498514d0f04f
 
 ### 📜 Assets References
 - 
+-
+-
 
 ## 📌 Main Functions
-###  - <a href="" >상세보기 - WIKI 이동</a>
-
+###  GameManager - <a href="" >상세보기 - WIKI 이동</a>
+###  AudioManager - <a href="" >상세보기 - WIKI 이동</a>
+###  DialogueManager - <a href="" >상세보기 - WIKI 이동</a>
+###  GunManager - <a href="" >상세보기 - WIKI 이동</a>
+###  IntroManager - <a href="" >상세보기 - WIKI 이동</a>
+###  TargetSpawnManager - <a href="" >상세보기 - WIKI 이동</a>
 
