@@ -33,7 +33,7 @@ Unity를 활용한 FPS Aim Training Game
 -
 
 ## 📌 Main Functions
-###  GameManager - <a href="" >상세보기 - WIKI 이동</a>
+###  GameManager - <a href="" >[상세보기 - WIKI 이동](https://github.com/NBC-A05-OmegaSix/AimTrainer/wiki/1-%E2%80%90-GameManager)</a>
 ###  AudioManager - <a href="" >상세보기 - WIKI 이동</a>
 ###  DialogueManager - <a href="" >상세보기 - WIKI 이동</a>
 ###  GunManager - <a href="" >상세보기 - WIKI 이동</a>
