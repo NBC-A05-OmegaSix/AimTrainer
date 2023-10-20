@@ -1,18 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CrosshairSettingMenu : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Image crosshairImage;
+    public Slider scaleSlider; // UI 슬라이더
 
-    // Update is called once per frame
-    void Update()
+    public void AdjustCrosshairScale()
     {
-        
+        float newScale = scaleSlider.value; 
+        crosshairImage.rectTransform.localScale = new Vector3(newScale, newScale, 1);
     }
 }

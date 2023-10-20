@@ -36,7 +36,7 @@ public class AudioManager : Singleton<AudioManager>
         sfxObject.transform.parent = transform;
         sfxPlayers = new AudioSource[channels];
 
-        for(int index = 0; index < sfxPlayers.Length; index++)
+        for (int index = 0; index < sfxPlayers.Length; index++)
         {
             sfxPlayers[index] = sfxObject.AddComponent<AudioSource>();
             sfxPlayers[index].playOnAwake = false;
@@ -82,40 +82,39 @@ public class AudioManager : Singleton<AudioManager>
     {
         for (int index = 0; index < sfxPlayers.Length; index++)
         {
-            int loopIndex = (index * channelIndex) % sfxPlayers.Length;
-
-            if (sfxPlayers[loopIndex].isPlaying)
+            int loopIndex = index % sfxPlayers.Length;
+            if (!sfxPlayers[loopIndex].isPlaying)
             {
-                continue;
+                if (sfx == Sfx.RunLeftFoot)
+                {
+                    sfx = (sfxPlayers[loopIndex].clip == sfxClips[(int)Sfx.RunLeftFoot])
+                        ? Sfx.RunRightFoot : Sfx.RunLeftFoot;
+                }
+
+                if (sfx == Sfx.WalkLeftFoot)
+                {
+                    sfx = (sfxPlayers[loopIndex].clip == sfxClips[(int)Sfx.WalkLeftFoot])
+                        ? Sfx.WalkRightFoot : Sfx.WalkLeftFoot;
+                }
+
+                channelIndex++;
+                if (channelIndex >= sfxPlayers.Length)
+                {
+                    channelIndex = 0;
+                }
+
+                sfxPlayers[loopIndex].PlayOneShot(sfxClips[(int)sfx]);
+
+                break;
             }
-
-            if (sfx == Sfx.RunLeftFoot)
-            {
-                sfx = (sfxPlayers[loopIndex].clip == sfxClips[(int)Sfx.RunLeftFoot])
-                    ? Sfx.RunRightFoot : Sfx.RunLeftFoot;
-            }
-
-            if (sfx == Sfx.WalkLeftFoot)
-            {
-                sfx = (sfxPlayers[loopIndex].clip == sfxClips[(int)Sfx.WalkLeftFoot])
-                    ? Sfx.WalkRightFoot : Sfx.WalkLeftFoot;
-            }
-
-            channelIndex = loopIndex;
-            sfxPlayers[loopIndex].clip = sfxClips[(int)sfx];
-
-            sfxPlayers[loopIndex].Play();
-
-            break;
         }
     }
-
 
     public void SetSFXVolume(float sfxVolume)
     {
         this.sfxVolume = sfxVolume;
 
-        foreach(var sfxPlayer in sfxPlayers)
+        foreach (var sfxPlayer in sfxPlayers)
         {
             sfxPlayer.volume = sfxVolume;
         }
@@ -123,7 +122,7 @@ public class AudioManager : Singleton<AudioManager>
 
     public void PlayerDialogue(int index)
     {
-        if(index >= 0 && index < dialogueClips.Length)
+        if (index >= 0 && index < dialogueClips.Length)
         {
             AudioSource dialoguePlayer = sfxPlayers[0];
             if (dialoguePlayer.isPlaying)

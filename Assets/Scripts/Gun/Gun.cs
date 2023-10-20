@@ -23,10 +23,10 @@ public class Gun : MonoBehaviour
 
     public GameObject bulletPrefab; // 총알 프리팹
     private float bulletSpeed = 10f; // 총알 속도
-    private float bulletLifetime = 2f; // 총알 생존 시간
+    private float bulletLifetime = 2.5f; // 총알 생존 시간
 
     private bool isReloading = false; // 리로드 중인지 여부
-    private float reloadTime = 7f; // 리로드 시간 (3초)
+    private float reloadTime = 3f; // 리로드 시간 (3초)
 
     private float burstInterval = 0.2f;
     public FireMode currentFireMode = FireMode.Single;
@@ -133,6 +133,7 @@ public class Gun : MonoBehaviour
         if (RecentAmmo > 0)
         {
             bulletCount++; // 발사한 총알 수 증가
+            Debug.Log("발사한 총알 수: " + bulletCount);
             if (OnAmmoCountUpdate != null)
             {
                 OnAmmoCountUpdate(bulletCount); // UI 
@@ -144,13 +145,13 @@ public class Gun : MonoBehaviour
                     if (isSniperRifle)
                     {
                         SRcurrentAmmo--;
-                        RecentAmmo--;
+                        //RecentAmmo--;   // 여기서 SRAmmo도 -1하고
                         countCoroutine = StartCoroutine(SniperRifleCooldown());
                     }
                     else
                     {
                         ARcurrentAmmo--;
-                        RecentAmmo--;
+                        //RecentAmmo--;  // ARammo도 -1 했는데 Recentammo도 -- 해서 -2가 되는 듯 합니다
                     }
                     Camera mainCamera = Camera.main;
                     if (mainCamera != null)
@@ -205,8 +206,10 @@ public class Gun : MonoBehaviour
         {
             Reload();
         }
+        Debug.Log("남은 총알 수: " + RecentAmmo);
+
     }
-    
+
     IEnumerator ShootSequence()
     {
         while (isShooting)
