@@ -1,17 +1,16 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class GameManager : Singleton<GameManager>
 {
     public GameObject mainMenu;
-    public GameObject resultUI; // 추가된 부분
+    public GameObject resultUI;
 
     void Start()
     {
         AudioManager.Instance.PlayBGM(0, true);
         Time.timeScale = 1;
         mainMenu.SetActive(false);
-        resultUI.SetActive(false); // 추가된 부분
+        resultUI.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
@@ -23,8 +22,6 @@ public class GameManager : Singleton<GameManager>
             AudioManager.Instance.PlayBGM(0, false);
             ToggleMainMenu();
         }
-
-        // 추가된 부분 
         GameObject[] targets = GameObject.FindGameObjectsWithTag("Target");
         if (targets.Length == 0)
         {
@@ -50,8 +47,6 @@ public class GameManager : Singleton<GameManager>
             Cursor.visible = false;
         }
     }
-
-    // 추가된 부분 
     void ShowResultUI()
     {
         AudioManager.Instance.PlayBGM(0, false);
